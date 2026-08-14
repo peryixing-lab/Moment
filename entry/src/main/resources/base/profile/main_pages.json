@@ -1,0 +1,18 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/SettingsPage",
+    "pages/CourseListPage",
+    "pages/CourseEditPage",
+    "pages/CourseImportPage",
+    "pages/CalendarImportSelectPage",
+    "pages/TaskListPage",
+    "pages/TaskEditPage",
+    "pages/SceneRuleListPage",
+    "pages/SceneRuleEditPage",
+    "pages/SceneContextRuleListPage",
+    "pages/SceneContextRuleEditPage",
+    "pages/FocusPage",
+    "pages/OnboardingPage"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "color": [
+    { "name": "start_window_background", "value": "#0B1220" },
+    { "name": "page_background", "value": "#0B1220" },
+    { "name": "page_background_transparent", "value": "#000B1220" },
+    { "name": "surface_primary", "value": "#F7111B2E" },
+    { "name": "surface_elevated", "value": "#F2182438" },
+    { "name": "surface_selected", "value": "#243F68" },
+    { "name": "surface_secondary", "value": "#16243A" },
+    { "name": "surface_tertiary", "value": "#1D2E49" },
+    { "name": "text_primary", "value": "#F4F7FB" },
+    { "name": "text_secondary", "value": "#B6C2D2" },
+    { "name": "text_tertiary", "value": "#7F8DA3" },
+    { "name": "accent", "value": "#5EA1FF" },
+    { "name": "accent_soft", "value": "#335EA1FF" },
+    { "name": "accent_muted", "value": "#8AB8FF" },
+    { "name": "on_accent", "value": "#07111F" },
+    { "name": "border", "value": "#2B3D59" },
+    { "name": "glass_edge", "value": "#33BFD8FF" },
+    { "name": "surface_shadow", "value": "#66000000" },
+    { "name": "hero_tint_top", "value": "#172740" },
+    { "name": "hero_tint_bottom", "value": "#10213B" },
+    { "name": "disabled", "value": "#5E6D82" },
+    { "name": "warning_surface", "value": "#382D18" },
+    { "name": "warning_material_tint", "value": "#33F0BE6B" },
+    { "name": "warning_text", "value": "#F0BE6B" },
+    { "name": "danger", "value": "#FF8A98" },
+    { "name": "danger_material_tint", "value": "#33FF8A98" }
+  ]
+}

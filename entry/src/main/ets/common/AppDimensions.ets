@@ -1,0 +1,31 @@
+export class AppDimensions {
+  static readonly PAGE_HORIZONTAL_PADDING: Resource = $r('app.float.page_horizontal_padding');
+  static readonly PAGE_TOP_PADDING: Resource = $r('app.float.page_top_padding');
+  static readonly PAGE_BOTTOM_PADDING: Resource = $r('app.float.page_bottom_padding');
+  static readonly SPACE_XS: Resource = $r('app.float.space_xs');
+  static readonly SPACE_SM: Resource = $r('app.float.space_sm');
+  static readonly SPACE_MD: Resource = $r('app.float.space_md');
+  static readonly SPACE_LG: Resource = $r('app.float.space_lg');
+  static readonly SPACE_XL: Resource = $r('app.float.space_xl');
+  static readonly RADIUS_PRIMARY: Resource = $r('app.float.radius_primary');
+  static readonly RADIUS_SECONDARY: Resource = $r('app.float.radius_secondary');
+  static readonly RADIUS_COMPACT: Resource = $r('app.float.radius_compact');
+  static readonly RADIUS_PILL: Resource = $r('app.float.radius_pill');
+  static readonly CARD_PADDING: Resource = $r('app.float.card_padding');
+  static readonly BUTTON_HEIGHT: Resource = $r('app.float.button_height');
+  static readonly MIN_TOUCH_TARGET: Resource = $r('app.float.min_touch_target');
+  static readonly DIVIDER_WIDTH: Resource = $r('app.float.divider_width');
+  static readonly MAX_CONTENT_WIDTH: number = 680;
+  static readonly ANIMATION_DURATION: number = 180;
+  static readonly COMPACT_BUTTON_HORIZONTAL_PADDING: number = 2;
+  static readonly FORM_BUTTON_HEIGHT: Resource = $r('app.float.form_button_height');
+  static readonly FORM_BUTTON_RADIUS: Resource = $r('app.float.form_button_radius');
+  static readonly FORM_CARD_PADDING: Resource = $r('app.float.form_card_padding');
+  static readonly FORM_PRIMARY_BUTTON_WIDTH: Resource = $r('app.float.form_primary_button_width');
+  static readonly FORM_SECONDARY_BUTTON_WIDTH: Resource = $r('app.float.form_secondary_button_width');
+  static readonly FORM_COMPACT_PADDING: Resource = $r('app.float.form_compact_padding');
+  static readonly FORM_MEDIUM_PADDING: Resource = $r('app.float.form_medium_padding');
+  static readonly FORM_LARGE_PADDING: Resource = $r('app.float.form_large_padding');
+  static readonly FORM_COMPACT_BUTTON_HEIGHT: Resource = $r('app.float.form_compact_button_height');
+  static readonly FORM_LARGE_BUTTON_HEIGHT: Resource = $r('app.float.form_large_button_height');
+}

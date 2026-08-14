@@ -1,0 +1,44 @@
+# Dependencies
+/node_modules/
+/oh_modules/
+/.appanalyzer/node_modules/
+
+# HarmonyOS / DevEco Studio build outputs and caches
+/.hvigor/
+**/build/
+**/.preview/
+**/.test/
+/.cxx/
+*.hap
+*.app
+
+# IDE and editor metadata
+/.idea/
+/.clangd/
+/.clang-format
+/.clang-tidy
+*.iml
+.vscode/
+
+# Local machine configuration
+/local.properties
+.env
+.env.*
+!.env.example
+
+# Signing certificates and private keys
+*.p12
+*.pfx
+*.p7b
+*.cer
+*.crt
+*.csr
+*.jks
+*.keystore
+*.pem
+*.key
+
+# Logs and operating-system files
+*.log
+.DS_Store
+Thumbs.db
