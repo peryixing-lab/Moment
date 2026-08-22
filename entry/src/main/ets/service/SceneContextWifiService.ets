@@ -4,7 +4,7 @@ import { AppLogger } from '../common/AppLogger';
 import { ResolvedSceneWifi } from '../model/SceneContextModels';
 import { SceneContextPermissionService } from './SceneContextPermissionService';
 
-const WIFI_INFO_TIMEOUT_MS: number = 5000;
+const WIFI_INFO_TIMEOUT_MS: number = 2000;
 
 export class SceneContextWifiService {
   static async currentWifi(): Promise<ResolvedSceneWifi> {
@@ -18,6 +18,11 @@ export class SceneContextWifiService {
     } catch (error) {
       AppLogger.error('Unable to inspect Wi-Fi state for scene context', error as Object);
       return SceneContextWifiService.failureFor(error as Object);
+    }
+    const immediate: ResolvedSceneWifi = SceneContextWifiService.linkedInfoSync();
+    if (immediate.success || immediate.errorCode === 'permission' ||
+      immediate.errorCode === 'wifi_disabled') {
+      return immediate;
     }
     return SceneContextWifiService.linkedInfoWithTimeout();
   }

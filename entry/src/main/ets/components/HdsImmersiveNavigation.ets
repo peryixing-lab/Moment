@@ -10,11 +10,13 @@ import { AppColors } from '../common/AppColors';
 import { AppDimensions } from '../common/AppDimensions';
 
 /**
- * HDS page title bar with the system-managed immersive-light material.
+ * HDS page title bar with the system immersive-light material.
  *
- * hdsMaterial is exposed by the current SDK only through supported HDS
- * components such as HdsNavigation and HdsTabs. The title bar actions below
- * are native HDS buttons; no custom material or light effect is drawn here.
+ * The immersive-light (IMMERSIVE) material requires device support; it is
+ * detected once in aboutToAppear via hdsMaterial.getSystemMaterialTypes().
+ * Devices without IMMERSIVE fall back to the adaptive system material with
+ * the SMOOTH level to avoid blur cost; the layout and safe-area handling
+ * stay unchanged in both cases.
  */
 @Component
 export struct HdsImmersiveNavigation {
@@ -26,9 +28,29 @@ export struct HdsImmersiveNavigation {
   @Prop menuLabel: ResourceStr = '';
   @Prop menuIcon: Resource = $r('sys.symbol.plus');
   @Prop menuEnabled: boolean = true;
+  @Prop contentMaxWidth: number = AppDimensions.MAX_CONTENT_WIDTH;
+  @State private materialType: hdsMaterial.MaterialType = hdsMaterial.MaterialType.ADAPTIVE;
+  @State private materialLevel: hdsMaterial.MaterialLevel = hdsMaterial.MaterialLevel.ADAPTIVE;
   scrollController: Scroller = new Scroller();
   onBack: () => void = () => {};
   onMenu: () => void = () => {};
+
+  aboutToAppear(): void {
+    try {
+      const supportedTypes: hdsMaterial.MaterialType[] = hdsMaterial.getSystemMaterialTypes();
+      const supportsImmersive: boolean =
+        supportedTypes.indexOf(hdsMaterial.MaterialType.IMMERSIVE) >= 0;
+      this.materialType = supportsImmersive
+        ? hdsMaterial.MaterialType.IMMERSIVE
+        : hdsMaterial.MaterialType.ADAPTIVE;
+      this.materialLevel = supportsImmersive
+        ? hdsMaterial.MaterialLevel.EXQUISITE
+        : hdsMaterial.MaterialLevel.SMOOTH;
+    } catch (_) {
+      this.materialType = hdsMaterial.MaterialType.ADAPTIVE;
+      this.materialLevel = hdsMaterial.MaterialLevel.ADAPTIVE;
+    }
+  }
 
   @Builder
   private emptyContent() {
@@ -87,7 +109,7 @@ export struct HdsImmersiveNavigation {
           }
           .width('100%')
           .height('100%')
-          .constraintSize({ maxWidth: AppDimensions.MAX_CONTENT_WIDTH })
+          .constraintSize({ maxWidth: this.contentMaxWidth })
         }
         .width('100%')
         .height('100%')
@@ -116,8 +138,8 @@ export struct HdsImmersiveNavigation {
             scrollEffectType: ScrollEffectType.COMMON_BLUR
           },
           systemMaterialEffect: {
-            materialType: hdsMaterial.MaterialType.ADAPTIVE,
-            materialLevel: hdsMaterial.MaterialLevel.ADAPTIVE
+            materialType: this.materialType,
+            materialLevel: this.materialLevel
           }
         },
         avoidLayoutSafeArea: true,

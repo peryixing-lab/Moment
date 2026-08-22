@@ -23,30 +23,30 @@
         "name": "ohos.permission.READ_WHOLE_CALENDAR",
         "reason": "$string:calendar_permission_reason",
         "usedScene": {
+          "when": "inuse",
           "abilities": [
             "EntryAbility"
-          ],
-          "when": "inuse"
+          ]
         }
       },
       {
         "name": "ohos.permission.APPROXIMATELY_LOCATION",
         "reason": "$string:location_scene_permission_reason",
         "usedScene": {
+          "when": "inuse",
           "abilities": [
             "EntryAbility"
-          ],
-          "when": "inuse"
+          ]
         }
       },
       {
         "name": "ohos.permission.LOCATION",
         "reason": "$string:location_scene_permission_reason",
         "usedScene": {
+          "when": "inuse",
           "abilities": [
             "EntryAbility"
-          ],
-          "when": "inuse"
+          ]
         }
       },
       {

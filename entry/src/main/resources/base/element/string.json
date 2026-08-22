@@ -1,378 +1,1436 @@
 {
   "string": [
-    { "name": "module_desc", "value": "此刻场景化信息应用" },
-    { "name": "EntryAbility_desc", "value": "此刻应用首页" },
-    { "name": "EntryAbility_label", "value": "此刻" },
-    { "name": "SceneFormAbility_label", "value": "此刻场景卡片" },
-    { "name": "SceneFormAbility_desc", "value": "展示此刻最相关的场景信息" },
-    { "name": "form_display_name", "value": "此刻场景" },
-    { "name": "form_description", "value": "展示当前场景与最重要的信息" },
-
-    { "name": "greeting_morning", "value": "早上好" },
-    { "name": "greeting_noon", "value": "中午好" },
-    { "name": "greeting_afternoon", "value": "下午好" },
-    { "name": "greeting_evening", "value": "晚上好" },
-    { "name": "home_title", "value": "此刻，重要的事刚刚好" },
-    { "name": "home_subtitle", "value": "信息不必寻找，它会在合适的时候出现。" },
-    { "name": "settings", "value": "设置" },
-    { "name": "today_information", "value": "今日信息" },
-    { "name": "reason_time", "value": "根据当前时间推荐" },
-    { "name": "reason_manual", "value": "由你手动选择" },
-    { "name": "reason_default", "value": "使用默认场景" },
-    { "name": "action_switch_scene", "value": "切换场景" },
-    { "name": "scene_switch_success", "value": "场景已切换" },
-    { "name": "scene_already_active", "value": "已经是当前场景" },
-    { "name": "scene_switch_busy", "value": "正在切换，请稍候" },
-    { "name": "scene_switch_not_applied", "value": "场景切换未生效，请重试" },
-    { "name": "scene_switch_dialog_title", "value": "切换场景" },
-    { "name": "scene_switch_dialog_description", "value": "选择需要的场景和持续时长，确认后立即切换。" },
-    { "name": "scene_switch_scene_label", "value": "场景" },
-    { "name": "scene_switch_duration_label", "value": "持续时长" },
-    { "name": "scene_duration_30_minutes", "value": "30 分钟" },
-    { "name": "scene_duration_1_hour", "value": "1 小时" },
-    { "name": "scene_duration_2_hours", "value": "2 小时" },
-    { "name": "scene_duration_until_restored", "value": "一直保持" },
-    { "name": "scene_switch_confirm", "value": "立即切换" },
-    { "name": "action_start_focus", "value": "开始专注" },
-    { "name": "action_view_course", "value": "查看课程" },
-    { "name": "action_ready_meeting", "value": "准备会议" },
-    { "name": "action_check_items", "value": "检查随身物品" },
-    { "name": "focus_started", "value": "已为你开始 25 分钟专注" },
-    { "name": "action_feedback", "value": "已记录此刻的主要操作" },
-    { "name": "storage_warning", "value": "本地设置暂时无法读取，已使用安全默认值。" },
-    { "name": "empty_title", "value": "此刻还没有可显示的信息" },
-    { "name": "empty_description", "value": "你仍可以切换场景，稍后再回来看看。" },
-
-    { "name": "scene_library_name", "value": "图书馆" },
-    { "name": "scene_library_short", "value": "专注学习" },
-    { "name": "scene_library_subtitle", "value": "安静下来，完成今天最重要的一件事。" },
-    { "name": "scene_class_name", "value": "上课" },
-    { "name": "scene_class_short", "value": "课堂进行中" },
-    { "name": "scene_class_subtitle", "value": "把注意力留在这一堂课上。" },
-    { "name": "scene_meeting_name", "value": "会议" },
-    { "name": "scene_meeting_short", "value": "高效沟通" },
-    { "name": "scene_meeting_subtitle", "value": "带着清晰的目标进入讨论。" },
-    { "name": "scene_commute_name", "value": "通勤" },
-    { "name": "scene_commute_short", "value": "利用碎片时间" },
-    { "name": "scene_commute_subtitle", "value": "从容出发，也别落下重要的东西。" },
-
-    { "name": "info_next_class", "value": "下一节课" },
-    { "name": "info_study_tasks", "value": "待完成学习任务" },
-    { "name": "info_borrow_due", "value": "借阅到期提醒" },
-    { "name": "info_current_course", "value": "当前课程" },
-    { "name": "info_classroom", "value": "教室位置" },
-    { "name": "info_class_todo", "value": "本节课待办" },
-    { "name": "info_meeting_topic", "value": "会议主题" },
-    { "name": "info_start_time", "value": "开始时间" },
-    { "name": "info_meeting_prepare", "value": "会前准备事项" },
-    { "name": "info_next_schedule", "value": "下一项日程" },
-    { "name": "info_departure_time", "value": "建议出发时间" },
-    { "name": "info_carry_items", "value": "随身物品检查" },
-
-    { "name": "value_data_structure", "value": "数据结构" },
-    { "name": "value_data_structure_course", "value": "数据结构课程" },
-    { "name": "value_class_time", "value": "14:00—15:40" },
-    { "name": "value_class_distance", "value": "距离上课还有 42 分钟" },
-    { "name": "value_class_in_progress", "value": "课程正在进行" },
-    { "name": "value_two_learning_tasks", "value": "今天还有 2 项学习任务" },
-    { "name": "value_quicksort_review", "value": "完成快速排序复习" },
-    { "name": "value_network_book", "value": "《计算机网络》" },
-    { "name": "value_due_three_days", "value": "还有 3 天到期" },
-    { "name": "value_classroom", "value": "理工楼 A203" },
-    { "name": "value_arrive_early", "value": "建议提前 5 分钟到达" },
-    { "name": "value_lab_report", "value": "完成实验报告" },
-    { "name": "value_after_class", "value": "课后完成" },
-    { "name": "value_weekly_meeting", "value": "项目周会" },
-    { "name": "value_meeting_time", "value": "18:30 开始" },
-    { "name": "value_meeting_room", "value": "协作空间 2" },
-    { "name": "value_progress_risk", "value": "准备本周进度与风险" },
-    { "name": "value_before_meeting", "value": "会前检查一次" },
-    { "name": "value_meeting_soon", "value": "距离会议开始还有 30 分钟" },
-    { "name": "value_departure_time", "value": "13:20 出发" },
-    { "name": "value_departure_suggestion", "value": "建议现在准备出发" },
-    { "name": "value_next_data_course", "value": "下一项日程：数据结构课程" },
-    { "name": "value_allow_walk", "value": "已预留步行时间" },
-    { "name": "value_carry_items", "value": "校园卡、耳机、充电宝" },
-    { "name": "value_checked", "value": "出发前再确认一次" },
-
-    { "name": "settings_title", "value": "设置" },
-    { "name": "settings_scene_section", "value": "场景" },
-    { "name": "settings_display_section", "value": "显示" },
-    { "name": "settings_data_section", "value": "本地设置" },
-    { "name": "auto_recommendation", "value": "自动推荐场景" },
-    { "name": "auto_recommendation_desc", "value": "根据时间、课程、地点和 Wi-Fi 选择更合适的场景" },
-    { "name": "default_scene", "value": "默认场景" },
-    { "name": "default_scene_desc", "value": "自动推荐关闭时使用" },
-    { "name": "show_secondary", "value": "显示次级信息" },
-    { "name": "show_secondary_desc", "value": "在首页和卡片中显示更多提醒" },
-    { "name": "reset_demo", "value": "重置演示数据" },
-    { "name": "reset_settings", "value": "重置显示设置" },
-    { "name": "reset_done", "value": "演示数据已重置" },
-    { "name": "reset_failed", "value": "暂时无法重置，请稍后重试" },
-    { "name": "about_moment", "value": "关于“此刻”" },
-    { "name": "about_description", "value": "一个安静、可信的场景化信息工具。" },
-    { "name": "back", "value": "返回" },
-
-    { "name": "form_open", "value": "打开此刻" },
-    { "name": "form_switch", "value": "切换" },
-    { "name": "form_focus_25", "value": "专注 25 分钟" },
-    { "name": "form_distance", "value": "距离" },
-    { "name": "form_remaining", "value": "还有" },
-    { "name": "form_start_suffix", "value": "开始" },
-    { "name": "form_fallback", "value": "此刻的信息正在准备中" },
-    { "name": "form_fallback_clock", "value": "--:--" },
-    { "name": "form_fallback_time", "value": "14:00—15:40" },
-    { "name": "form_fallback_title", "value": "数据结构" },
-    { "name": "form_fallback_note", "value": "距离上课还有 42 分钟" },
-    { "name": "form_fallback_reason", "value": "使用默认场景" },
-
-    { "name": "source_manual", "value": "手动选择" },
-    { "name": "source_context_rule", "value": "环境规则" },
-    { "name": "source_time_rule", "value": "时间规则" },
-    { "name": "source_schedule", "value": "课程安排" },
-    { "name": "source_default", "value": "默认场景" },
-    { "name": "reason_manual_locked", "value": "场景会保持到你手动恢复" },
-    { "name": "reason_manual_temporary", "value": "手动场景将在所选时长后恢复自动推荐" },
-    { "name": "reason_context_rule", "value": "已进入你设置的地点或连接指定 Wi-Fi" },
-    { "name": "reason_time_rule", "value": "命中你设置的场景时间规则" },
-    { "name": "reason_schedule", "value": "课程即将开始或正在进行" },
-    { "name": "manual_remaining", "value": "手动场景剩余" },
-    { "name": "manual_locked", "value": "已保持当前场景" },
-    { "name": "lock_manual_scene", "value": "保持此场景" },
-    { "name": "unlock_manual_scene", "value": "改为两小时" },
-    { "name": "restore_auto_scene", "value": "恢复自动推荐" },
-
-    { "name": "ranking_course_current", "value": "正在上课" },
-    { "name": "ranking_course_upcoming", "value": "即将上课" },
-    { "name": "ranking_started", "value": "已开始" },
-    { "name": "ranking_task", "value": "待办任务" },
-    { "name": "focus_running", "value": "专注中" },
-    { "name": "focus_remaining", "value": "还剩" },
-    { "name": "unit_minute", "value": "分钟" },
-    { "name": "minutes_later", "value": "分钟后" },
-    { "name": "task_overdue", "value": "已过期" },
-    { "name": "task_due", "value": "截止" },
-    { "name": "priority_low", "value": "低" },
-    { "name": "priority_medium", "value": "中" },
-    { "name": "priority_high", "value": "高" },
-    { "name": "priority_urgent", "value": "紧急" },
-    { "name": "action_complete_task", "value": "完成任务" },
-    { "name": "action_start_25_focus", "value": "开始 25 分钟专注" },
-    { "name": "action_stop_focus", "value": "结束专注" },
-    { "name": "action_open_course", "value": "打开课程" },
-    { "name": "action_open_tasks", "value": "打开任务" },
-
-    { "name": "today_focus", "value": "今日重点" },
-    { "name": "upcoming", "value": "即将发生" },
-    { "name": "management", "value": "管理" },
-    { "name": "manage_courses", "value": "课程管理" },
-    { "name": "manage_tasks", "value": "任务管理" },
-    { "name": "manage_rules", "value": "场景时间规则" },
-    { "name": "manage_context_rules", "value": "地点与 Wi-Fi 场景" },
-    { "name": "manage_focus", "value": "专注记录" },
-    { "name": "data_error_title", "value": "本地数据暂时不可用" },
-    { "name": "data_error_description", "value": "你的页面仍可打开，请重试读取本地数据。" },
-    { "name": "retry", "value": "重试" },
-    { "name": "no_today_focus", "value": "今天没有待办" },
-    { "name": "no_today_focus_desc", "value": "此刻可以留给真正重要的事。" },
-
-    { "name": "course_list_title", "value": "课程管理" },
-    { "name": "course_empty_title", "value": "还没有课程" },
-    { "name": "course_empty_description", "value": "添加课程后，我会在上课前为你准备好信息。" },
-    { "name": "add_course", "value": "添加课程" },
-    { "name": "edit_course", "value": "编辑课程" },
-    { "name": "course_name", "value": "课程名称" },
-    { "name": "course_day", "value": "星期" },
-    { "name": "start_time", "value": "开始时间" },
-    { "name": "end_time", "value": "结束时间" },
-    { "name": "course_location", "value": "教室（可选）" },
-    { "name": "course_teacher", "value": "教师（可选）" },
-    { "name": "course_valid_from", "value": "课程开始日期（可选）" },
-    { "name": "course_valid_until", "value": "课程结束日期（可选）" },
-    { "name": "course_date_placeholder", "value": "YYYY-MM-DD；留空表示不限制" },
-    { "name": "course_reminder", "value": "提前提醒分钟数" },
-    { "name": "course_disabled", "value": "已停用" },
-    { "name": "delete_course_title", "value": "删除这节课程？" },
-    { "name": "delete_course_message", "value": "删除后课程将不再参与场景推荐。" },
-    { "name": "batch_delete", "value": "批量删除" },
-    { "name": "selected_count_label", "value": "已选择" },
-    { "name": "delete_selected_courses", "value": "删除所选课程" },
-    { "name": "batch_delete_select_first", "value": "请至少选择一门课程。" },
-    { "name": "batch_delete_course_title", "value": "删除所选课程？" },
-    { "name": "batch_delete_course_message", "value": "所选课程将被永久删除，并且不再参与场景推荐。" },
-    { "name": "batch_delete_course_done", "value": "所选课程已删除" },
-    { "name": "course_validation_name", "value": "请输入课程名称。" },
-    { "name": "course_validation_time", "value": "请输入合法时间，且开始时间早于结束时间。" },
-    { "name": "course_validation_reminder", "value": "提醒时间不能为负数。" },
-    { "name": "course_validation_date", "value": "请输入合法日期，且开始日期不能晚于结束日期。" },
-    { "name": "import_courses", "value": "导入课程" },
-    { "name": "course_import_title", "value": "导入课程" },
-    { "name": "course_import_source_title", "value": "选择导入来源" },
-    { "name": "import_from_calendar", "value": "从系统日历导入" },
-    { "name": "import_from_calendar_desc", "value": "进入日程选择页面，从所有可访问日历中选择要添加的课程。" },
-    { "name": "import_from_vcs", "value": "从 VCS 文件导入" },
-    { "name": "import_from_vcs_desc", "value": "通过系统文件选择器读取 .vcs 或 .ics 日历文件。" },
-    { "name": "calendar_permission_reason", "value": "用于读取日历事件并由你选择要导入的课程" },
-    { "name": "location_scene_permission_reason", "value": "用于在应用使用期间判断是否进入你设置的地点并切换场景" },
-    { "name": "calendar_permission_denied", "value": "未获得日历读取权限，无法读取日历。你仍可使用 VCS 文件导入。" },
-    { "name": "calendar_import_failed", "value": "暂时无法读取系统日历，请稍后重试。" },
-    { "name": "calendar_import_empty_default", "value": "所有日历中都没有找到可导入的非全天事件。" },
-    { "name": "vcs_import_failed", "value": "无法读取或解析该文件，请选择有效的 VCS/ICS 文件。" },
-    { "name": "course_import_loading", "value": "正在读取课程…" },
-    { "name": "course_import_empty", "value": "没有找到可导入的非全天课程事件。" },
-    { "name": "course_import_preview", "value": "选择要导入的课程" },
-    { "name": "calendar_import_select_title", "value": "选择日程" },
-    { "name": "calendar_import_select_hint", "value": "勾选要添加的课程" },
-    { "name": "calendar_import_selected_label", "value": "已选择" },
-    { "name": "course_import_source_calendar", "value": "来源：系统日历" },
-    { "name": "course_import_source_vcs", "value": "来源：VCS/ICS 文件" },
-    { "name": "course_import_weekly_note", "value": "将按实际开课和结课日期创建课程，并自动识别教师；相同课程会自动合并或跳过。" },
-    { "name": "select_all", "value": "全选" },
-    { "name": "clear_selection", "value": "清空" },
-    { "name": "import_selected_courses", "value": "导入所选课程" },
-    { "name": "course_import_select_first", "value": "请至少选择一门课程。" },
-    { "name": "course_import_save_failed", "value": "课程导入失败，请稍后重试。" },
-    { "name": "course_import_done", "value": "课程已导入" },
-    { "name": "course_import_all_duplicate", "value": "所选课程均已存在" },
-
-    { "name": "task_list_title", "value": "任务管理" },
-    { "name": "task_empty_title", "value": "今天没有待办" },
-    { "name": "task_empty_description", "value": "此刻可以留给真正重要的事。" },
-    { "name": "add_task", "value": "添加任务" },
-    { "name": "edit_task", "value": "编辑任务" },
-    { "name": "task_title", "value": "任务标题" },
-    { "name": "task_description", "value": "描述（可选）" },
-    { "name": "task_deadline", "value": "截止时间（可选）" },
-    { "name": "task_deadline_hint", "value": "例如 2026-07-22 18:30" },
-    { "name": "task_priority", "value": "优先级" },
-    { "name": "task_scene", "value": "所属场景" },
-    { "name": "all_scenes", "value": "所有场景" },
-    { "name": "show_completed", "value": "显示已完成" },
-    { "name": "hide_completed", "value": "隐藏已完成" },
-    { "name": "complete", "value": "完成" },
-    { "name": "restore", "value": "恢复" },
-    { "name": "delete_task_title", "value": "删除这项任务？" },
-    { "name": "delete_task_message", "value": "删除后将无法恢复。" },
-    { "name": "task_validation_title", "value": "请输入任务标题。" },
-    { "name": "task_validation_due", "value": "截止时间格式应为 YYYY-MM-DD HH:mm。" },
-
-    { "name": "rule_list_title", "value": "场景时间规则" },
-    { "name": "rule_empty_title", "value": "还没有自动场景规则" },
-    { "name": "rule_empty_description", "value": "创建规则后，此刻会在合适的时间切换场景。" },
-    { "name": "add_rule", "value": "创建规则" },
-    { "name": "edit_rule", "value": "编辑规则" },
-    { "name": "rule_name", "value": "规则名称" },
-    { "name": "rule_days", "value": "生效星期" },
-    { "name": "rule_scene", "value": "目标场景" },
-    { "name": "rule_priority", "value": "优先级（1—20）" },
-    { "name": "delete_rule_title", "value": "删除这条规则？" },
-    { "name": "delete_rule_message", "value": "删除后该规则将不再参与场景推荐。" },
-    { "name": "rule_validation_name", "value": "请输入规则名称。" },
-    { "name": "rule_validation_days", "value": "请至少选择一天。" },
-    { "name": "rule_validation_priority", "value": "优先级必须在 1 到 20 之间。" },
-
-    { "name": "focus_page_title", "value": "专注" },
-    { "name": "start_focus", "value": "开始专注" },
-    { "name": "focus_25", "value": "25 分钟" },
-    { "name": "focus_45", "value": "45 分钟" },
-    { "name": "focus_custom", "value": "自定义分钟数" },
-    { "name": "focus_history", "value": "历史记录" },
-    { "name": "focus_no_history", "value": "还没有专注记录" },
-    { "name": "focus_completed", "value": "已完成" },
-    { "name": "focus_cancelled", "value": "已提前结束" },
-    { "name": "focus_validation", "value": "专注时长应为 1 到 240 分钟。" },
-    { "name": "focus_already_running", "value": "已有专注正在进行。" },
-
-    { "name": "onboarding_welcome_eyebrow", "value": "你的此刻，值得被看见" },
-    { "name": "onboarding_title", "value": "欢迎来到“此刻”" },
-    { "name": "onboarding_intro", "value": "不用在日程、任务与时间之间来回寻找。此刻会把眼前最重要的事，恰好放到你面前。" },
-    { "name": "onboarding_benefit_context_title", "value": "跟随你的状态" },
-    { "name": "onboarding_benefit_context_description", "value": "结合时间、课程与选择，呈现适合当下的场景。" },
-    { "name": "onboarding_benefit_priority_title", "value": "先看最重要的事" },
-    { "name": "onboarding_benefit_priority_description", "value": "课程、任务与专注进度，始终按此刻的需要排序。" },
-    { "name": "onboarding_benefit_glance_title", "value": "抬眼就能行动" },
-    { "name": "onboarding_benefit_glance_description", "value": "桌面卡片保留关键提醒，不必反复打开应用。" },
-    { "name": "onboarding_default", "value": "哪种状态最像你的日常？" },
-    { "name": "onboarding_default_description", "value": "先选择一个默认场景，之后仍可随时切换。" },
-    { "name": "onboarding_default_note", "value": "默认场景只是起点；设置课程与规则后，此刻会在合适的时间自动调整。" },
-    { "name": "onboarding_scene_selected", "value": "已选为默认场景" },
-    { "name": "onboarding_get_started", "value": "开始设置" },
-    { "name": "onboarding_continue", "value": "继续" },
-    { "name": "onboarding_back", "value": "返回上一步" },
-    { "name": "onboarding_logo_description", "value": "此刻应用标志" },
-    { "name": "onboarding_add_first", "value": "让此刻先认识一件重要的事" },
-    { "name": "onboarding_add_first_description", "value": "添加一节课程或一项任务，你会立刻看到此刻如何为你整理信息。" },
-    { "name": "onboarding_selected_scene", "value": "默认场景" },
-    { "name": "onboarding_add_course", "value": "添加第一节课程" },
-    { "name": "onboarding_add_course_description", "value": "适合有固定时间、地点与周次的安排" },
-    { "name": "onboarding_add_task", "value": "添加第一项任务" },
-    { "name": "onboarding_add_task_description", "value": "适合待办、截止日期与今天的重点" },
-    { "name": "onboarding_ready_note", "value": "完成后，你可以在首页继续添加内容、切换场景或开始专注。" },
-    { "name": "onboarding_later", "value": "暂时跳过，直接开始" },
-
-    { "name": "context_rule_list_title", "value": "地点与 Wi-Fi 场景" },
-    { "name": "add_context_rule", "value": "添加环境规则" },
-    { "name": "edit_context_rule", "value": "编辑环境规则" },
-    { "name": "context_rule_empty_title", "value": "还没有环境规则" },
-    { "name": "context_rule_empty_description", "value": "添加地点或 Wi-Fi，进入对应环境时即可提示或自动切换场景。" },
-    { "name": "context_rule_foreground_note", "value": "为保护隐私与电量，地点和 Wi-Fi 仅在应用使用期间检测。" },
-    { "name": "context_rule_name", "value": "规则名称" },
-    { "name": "context_rule_name_placeholder", "value": "例如：到公司" },
-    { "name": "context_target_scene", "value": "切换到场景" },
-    { "name": "context_trigger_type", "value": "触发条件" },
-    { "name": "context_trigger_wifi", "value": "连接 Wi-Fi" },
-    { "name": "context_trigger_location", "value": "进入地点" },
-    { "name": "context_wifi_ssid", "value": "Wi-Fi 名称（SSID）" },
-    { "name": "context_wifi_ssid_placeholder", "value": "请输入要匹配的 Wi-Fi 名称" },
-    { "name": "context_use_current_wifi", "value": "使用当前 Wi-Fi" },
-    { "name": "context_wifi_not_connected", "value": "当前未连接可识别的 Wi-Fi。" },
-    { "name": "context_wifi_disabled", "value": "系统 Wi-Fi 未开启，请开启并连接网络后重试。" },
-    { "name": "context_wifi_permission_missing", "value": "系统未向应用提供 Wi-Fi 信息权限，请确认安装的是最新版本。" },
-    { "name": "context_wifi_timeout", "value": "读取 Wi-Fi 信息超时，请稍后重试。" },
-    { "name": "context_wifi_unavailable", "value": "暂时无法读取当前 Wi-Fi 信息，请断开重连后重试。" },
-    { "name": "context_address", "value": "地点地址" },
-    { "name": "context_address_placeholder", "value": "例如：上海市浦东新区世纪大道 100 号" },
-    { "name": "context_radius", "value": "触发半径（米）" },
-    { "name": "context_radius_placeholder", "value": "100–5000" },
-    { "name": "context_resolve_address", "value": "定位此地址" },
-    { "name": "context_use_current_location", "value": "使用当前位置" },
-    { "name": "context_auto_switch", "value": "自动切换" },
-    { "name": "context_auto_switch_desc", "value": "开启后，命中条件时不再询问，直接切换到该场景。" },
-    { "name": "context_switch_automatic", "value": "命中后自动切换" },
-    { "name": "context_switch_prompt", "value": "命中后先询问" },
-    { "name": "context_working", "value": "处理中…" },
-    { "name": "context_validation_name", "value": "请输入规则名称。" },
-    { "name": "context_validation_wifi", "value": "请输入 1–32 个字符的 Wi-Fi 名称。" },
-    { "name": "context_validation_address", "value": "请输入地点地址。" },
-    { "name": "context_validation_radius", "value": "触发半径应为 100–5000 米的整数。" },
-    { "name": "context_address_not_found", "value": "无法识别该地址，请补充省市区和详细地址。" },
-    { "name": "context_address_timeout", "value": "地址解析超时，请检查网络连接后重试。" },
-    { "name": "context_location_permission_denied", "value": "需要精确位置权限才能添加或检测地点规则。" },
-    { "name": "context_location_disabled", "value": "系统定位服务未开启，请允许开启定位后重试。" },
-    { "name": "context_location_timeout", "value": "定位超时，请到开阔区域或连接网络后重试。" },
-    { "name": "context_location_unavailable", "value": "暂时无法获取当前位置，请确认已开启系统定位。" },
-    { "name": "delete_context_rule_title", "value": "删除这条环境规则？" },
-    { "name": "delete_context_rule_message", "value": "删除后，该地点或 Wi-Fi 将不再触发场景切换。" },
-    { "name": "context_switch_prompt_title", "value": "切换场景？" },
-    { "name": "context_switch_once", "value": "仅这次切换" },
-    { "name": "context_switch_always", "value": "切换并以后自动" },
-    { "name": "context_switch_applied", "value": "已根据当前环境切换场景" },
-
-    { "name": "save", "value": "保存" },
-    { "name": "edit", "value": "编辑" },
-    { "name": "delete", "value": "删除" },
-    { "name": "cancel", "value": "取消" },
-    { "name": "confirm", "value": "确认" },
-    { "name": "enabled", "value": "启用" },
-    { "name": "disabled", "value": "停用" },
-    { "name": "save_failed", "value": "保存失败，请重试。" },
-    { "name": "operation_failed", "value": "操作失败，请重试。" },
-    { "name": "weekday_sunday", "value": "周日" },
-    { "name": "weekday_monday", "value": "周一" },
-    { "name": "weekday_tuesday", "value": "周二" },
-    { "name": "weekday_wednesday", "value": "周三" },
-    { "name": "weekday_thursday", "value": "周四" },
-    { "name": "weekday_friday", "value": "周五" },
-    { "name": "weekday_saturday", "value": "周六" }
+    {
+      "name": "module_desc",
+      "value": "此刻场景化信息应用"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "此刻应用首页"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "此刻"
+    },
+    {
+      "name": "SceneFormAbility_label",
+      "value": "此刻场景卡片"
+    },
+    {
+      "name": "SceneFormAbility_desc",
+      "value": "展示此刻最相关的场景信息"
+    },
+    {
+      "name": "form_display_name",
+      "value": "此刻场景"
+    },
+    {
+      "name": "form_description",
+      "value": "展示当前场景与最重要的信息"
+    },
+    {
+      "name": "greeting_morning",
+      "value": "早上好"
+    },
+    {
+      "name": "greeting_noon",
+      "value": "中午好"
+    },
+    {
+      "name": "greeting_afternoon",
+      "value": "下午好"
+    },
+    {
+      "name": "greeting_evening",
+      "value": "晚上好"
+    },
+    {
+      "name": "home_title",
+      "value": "此刻，重要的事刚刚好"
+    },
+    {
+      "name": "home_subtitle",
+      "value": "信息不必寻找，它会在合适的时候出现。"
+    },
+    {
+      "name": "settings",
+      "value": "设置"
+    },
+    {
+      "name": "today_information",
+      "value": "今日信息"
+    },
+    {
+      "name": "reason_time",
+      "value": "根据当前时间推荐"
+    },
+    {
+      "name": "reason_manual",
+      "value": "由你手动选择"
+    },
+    {
+      "name": "reason_default",
+      "value": "使用默认场景"
+    },
+    {
+      "name": "action_switch_scene",
+      "value": "切换场景"
+    },
+    {
+      "name": "scene_switch_success",
+      "value": "场景已切换"
+    },
+    {
+      "name": "scene_already_active",
+      "value": "已经是当前场景"
+    },
+    {
+      "name": "scene_switch_busy",
+      "value": "正在切换，请稍候"
+    },
+    {
+      "name": "scene_switch_not_applied",
+      "value": "场景切换未生效，请重试"
+    },
+    {
+      "name": "scene_switch_dialog_title",
+      "value": "切换场景"
+    },
+    {
+      "name": "scene_switch_dialog_description",
+      "value": "选择需要的场景和持续时长，确认后立即切换。"
+    },
+    {
+      "name": "scene_switch_scene_label",
+      "value": "场景"
+    },
+    {
+      "name": "scene_switch_duration_label",
+      "value": "持续时长"
+    },
+    {
+      "name": "scene_duration_30_minutes",
+      "value": "30 分钟"
+    },
+    {
+      "name": "scene_duration_1_hour",
+      "value": "1 小时"
+    },
+    {
+      "name": "scene_duration_2_hours",
+      "value": "2 小时"
+    },
+    {
+      "name": "scene_duration_until_restored",
+      "value": "一直保持"
+    },
+    {
+      "name": "scene_switch_confirm",
+      "value": "立即切换"
+    },
+    {
+      "name": "action_start_focus",
+      "value": "开始专注"
+    },
+    {
+      "name": "action_view_course",
+      "value": "查看课程"
+    },
+    {
+      "name": "action_ready_meeting",
+      "value": "准备会议"
+    },
+    {
+      "name": "action_check_items",
+      "value": "检查随身物品"
+    },
+    {
+      "name": "focus_started",
+      "value": "已为你开始 25 分钟专注"
+    },
+    {
+      "name": "action_feedback",
+      "value": "已记录此刻的主要操作"
+    },
+    {
+      "name": "storage_warning",
+      "value": "本地设置暂时无法读取，已使用安全默认值。"
+    },
+    {
+      "name": "empty_title",
+      "value": "此刻还没有可显示的信息"
+    },
+    {
+      "name": "empty_description",
+      "value": "你仍可以切换场景，稍后再回来看看。"
+    },
+    {
+      "name": "scene_library_name",
+      "value": "图书馆"
+    },
+    {
+      "name": "scene_library_short",
+      "value": "专注学习"
+    },
+    {
+      "name": "scene_library_subtitle",
+      "value": "安静下来，完成今天最重要的一件事。"
+    },
+    {
+      "name": "scene_class_name",
+      "value": "上课"
+    },
+    {
+      "name": "scene_class_short",
+      "value": "课堂进行中"
+    },
+    {
+      "name": "scene_class_subtitle",
+      "value": "把注意力留在这一堂课上。"
+    },
+    {
+      "name": "scene_meeting_name",
+      "value": "会议"
+    },
+    {
+      "name": "scene_meeting_short",
+      "value": "高效沟通"
+    },
+    {
+      "name": "scene_meeting_subtitle",
+      "value": "带着清晰的目标进入讨论。"
+    },
+    {
+      "name": "scene_commute_name",
+      "value": "通勤"
+    },
+    {
+      "name": "scene_commute_short",
+      "value": "利用碎片时间"
+    },
+    {
+      "name": "scene_commute_subtitle",
+      "value": "从容出发，也别落下重要的东西。"
+    },
+    {
+      "name": "info_next_class",
+      "value": "下一节课"
+    },
+    {
+      "name": "info_study_tasks",
+      "value": "待完成学习任务"
+    },
+    {
+      "name": "info_borrow_due",
+      "value": "借阅到期提醒"
+    },
+    {
+      "name": "info_current_course",
+      "value": "当前课程"
+    },
+    {
+      "name": "info_classroom",
+      "value": "教室位置"
+    },
+    {
+      "name": "info_class_todo",
+      "value": "本节课待办"
+    },
+    {
+      "name": "info_meeting_topic",
+      "value": "会议主题"
+    },
+    {
+      "name": "info_start_time",
+      "value": "开始时间"
+    },
+    {
+      "name": "info_meeting_prepare",
+      "value": "会前准备事项"
+    },
+    {
+      "name": "info_next_schedule",
+      "value": "下一项日程"
+    },
+    {
+      "name": "info_departure_time",
+      "value": "建议出发时间"
+    },
+    {
+      "name": "info_carry_items",
+      "value": "随身物品检查"
+    },
+    {
+      "name": "value_data_structure",
+      "value": "数据结构"
+    },
+    {
+      "name": "value_data_structure_course",
+      "value": "数据结构课程"
+    },
+    {
+      "name": "value_class_time",
+      "value": "14:00—15:40"
+    },
+    {
+      "name": "value_class_distance",
+      "value": "距离上课还有 42 分钟"
+    },
+    {
+      "name": "value_class_in_progress",
+      "value": "课程正在进行"
+    },
+    {
+      "name": "value_two_learning_tasks",
+      "value": "今天还有 2 项学习任务"
+    },
+    {
+      "name": "value_quicksort_review",
+      "value": "完成快速排序复习"
+    },
+    {
+      "name": "value_network_book",
+      "value": "《计算机网络》"
+    },
+    {
+      "name": "value_due_three_days",
+      "value": "还有 3 天到期"
+    },
+    {
+      "name": "value_classroom",
+      "value": "理工楼 A203"
+    },
+    {
+      "name": "value_arrive_early",
+      "value": "建议提前 5 分钟到达"
+    },
+    {
+      "name": "value_lab_report",
+      "value": "完成实验报告"
+    },
+    {
+      "name": "value_after_class",
+      "value": "课后完成"
+    },
+    {
+      "name": "value_weekly_meeting",
+      "value": "项目周会"
+    },
+    {
+      "name": "value_meeting_time",
+      "value": "18:30 开始"
+    },
+    {
+      "name": "value_meeting_room",
+      "value": "协作空间 2"
+    },
+    {
+      "name": "value_progress_risk",
+      "value": "准备本周进度与风险"
+    },
+    {
+      "name": "value_before_meeting",
+      "value": "会前检查一次"
+    },
+    {
+      "name": "value_meeting_soon",
+      "value": "距离会议开始还有 30 分钟"
+    },
+    {
+      "name": "value_departure_time",
+      "value": "13:20 出发"
+    },
+    {
+      "name": "value_departure_suggestion",
+      "value": "建议现在准备出发"
+    },
+    {
+      "name": "value_next_data_course",
+      "value": "下一项日程：数据结构课程"
+    },
+    {
+      "name": "value_allow_walk",
+      "value": "已预留步行时间"
+    },
+    {
+      "name": "value_carry_items",
+      "value": "校园卡、耳机、充电宝"
+    },
+    {
+      "name": "value_checked",
+      "value": "出发前再确认一次"
+    },
+    {
+      "name": "settings_title",
+      "value": "设置"
+    },
+    {
+      "name": "settings_scene_section",
+      "value": "场景"
+    },
+    {
+      "name": "settings_display_section",
+      "value": "显示"
+    },
+    {
+      "name": "settings_data_section",
+      "value": "本地设置"
+    },
+    {
+      "name": "auto_recommendation",
+      "value": "自动推荐场景"
+    },
+    {
+      "name": "auto_recommendation_desc",
+      "value": "根据时间、课程、地点和 Wi-Fi 选择更合适的场景"
+    },
+    {
+      "name": "default_scene",
+      "value": "默认场景"
+    },
+    {
+      "name": "default_scene_desc",
+      "value": "自动推荐关闭时使用"
+    },
+    {
+      "name": "show_secondary",
+      "value": "显示次级信息"
+    },
+    {
+      "name": "show_secondary_desc",
+      "value": "在首页和卡片中显示更多提醒"
+    },
+    {
+      "name": "reset_demo",
+      "value": "重置演示数据"
+    },
+    {
+      "name": "reset_settings",
+      "value": "重置显示设置"
+    },
+    {
+      "name": "reset_done",
+      "value": "演示数据已重置"
+    },
+    {
+      "name": "reset_failed",
+      "value": "暂时无法重置，请稍后重试"
+    },
+    {
+      "name": "about_moment",
+      "value": "关于“此刻”"
+    },
+    {
+      "name": "about_description",
+      "value": "一个安静、可信的场景化信息工具。"
+    },
+    {
+      "name": "back",
+      "value": "返回"
+    },
+    {
+      "name": "form_open",
+      "value": "打开此刻"
+    },
+    {
+      "name": "form_switch",
+      "value": "切换"
+    },
+    {
+      "name": "form_focus_25",
+      "value": "专注 25 分钟"
+    },
+    {
+      "name": "form_distance",
+      "value": "距离"
+    },
+    {
+      "name": "form_remaining",
+      "value": "还有"
+    },
+    {
+      "name": "form_start_suffix",
+      "value": "开始"
+    },
+    {
+      "name": "form_fallback",
+      "value": "此刻的信息正在准备中"
+    },
+    {
+      "name": "form_fallback_clock",
+      "value": "--:--"
+    },
+    {
+      "name": "form_fallback_time",
+      "value": "14:00—15:40"
+    },
+    {
+      "name": "form_fallback_title",
+      "value": "数据结构"
+    },
+    {
+      "name": "form_fallback_note",
+      "value": "距离上课还有 42 分钟"
+    },
+    {
+      "name": "form_fallback_reason",
+      "value": "使用默认场景"
+    },
+    {
+      "name": "source_manual",
+      "value": "手动选择"
+    },
+    {
+      "name": "source_context_rule",
+      "value": "环境规则"
+    },
+    {
+      "name": "source_time_rule",
+      "value": "时间规则"
+    },
+    {
+      "name": "source_schedule",
+      "value": "课程安排"
+    },
+    {
+      "name": "source_default",
+      "value": "默认场景"
+    },
+    {
+      "name": "reason_manual_locked",
+      "value": "场景会保持到你手动恢复"
+    },
+    {
+      "name": "reason_manual_temporary",
+      "value": "手动场景将在所选时长后恢复自动推荐"
+    },
+    {
+      "name": "reason_context_rule",
+      "value": "已进入你设置的地点或连接指定 Wi-Fi"
+    },
+    {
+      "name": "reason_time_rule",
+      "value": "命中你设置的场景时间规则"
+    },
+    {
+      "name": "reason_schedule",
+      "value": "课程即将开始或正在进行"
+    },
+    {
+      "name": "manual_remaining",
+      "value": "手动场景剩余"
+    },
+    {
+      "name": "manual_locked",
+      "value": "已保持当前场景"
+    },
+    {
+      "name": "lock_manual_scene",
+      "value": "保持此场景"
+    },
+    {
+      "name": "unlock_manual_scene",
+      "value": "改为两小时"
+    },
+    {
+      "name": "restore_auto_scene",
+      "value": "恢复自动推荐"
+    },
+    {
+      "name": "ranking_course_current",
+      "value": "正在上课"
+    },
+    {
+      "name": "ranking_course_upcoming",
+      "value": "即将上课"
+    },
+    {
+      "name": "ranking_started",
+      "value": "已开始"
+    },
+    {
+      "name": "ranking_task",
+      "value": "待办任务"
+    },
+    {
+      "name": "focus_running",
+      "value": "专注中"
+    },
+    {
+      "name": "focus_remaining",
+      "value": "还剩"
+    },
+    {
+      "name": "unit_minute",
+      "value": "分钟"
+    },
+    {
+      "name": "minutes_later",
+      "value": "分钟后"
+    },
+    {
+      "name": "task_overdue",
+      "value": "已过期"
+    },
+    {
+      "name": "task_due",
+      "value": "截止"
+    },
+    {
+      "name": "priority_low",
+      "value": "低"
+    },
+    {
+      "name": "priority_medium",
+      "value": "中"
+    },
+    {
+      "name": "priority_high",
+      "value": "高"
+    },
+    {
+      "name": "priority_urgent",
+      "value": "紧急"
+    },
+    {
+      "name": "action_complete_task",
+      "value": "完成任务"
+    },
+    {
+      "name": "action_start_25_focus",
+      "value": "开始 25 分钟专注"
+    },
+    {
+      "name": "action_stop_focus",
+      "value": "结束专注"
+    },
+    {
+      "name": "action_open_course",
+      "value": "打开课程"
+    },
+    {
+      "name": "action_open_tasks",
+      "value": "打开任务"
+    },
+    {
+      "name": "today_focus",
+      "value": "今日重点"
+    },
+    {
+      "name": "upcoming",
+      "value": "即将发生"
+    },
+    {
+      "name": "management",
+      "value": "管理"
+    },
+    {
+      "name": "manage_courses",
+      "value": "课程管理"
+    },
+    {
+      "name": "manage_tasks",
+      "value": "任务管理"
+    },
+    {
+      "name": "manage_rules",
+      "value": "场景时间规则"
+    },
+    {
+      "name": "manage_context_rules",
+      "value": "地点与 Wi-Fi 场景"
+    },
+    {
+      "name": "manage_focus",
+      "value": "专注记录"
+    },
+    {
+      "name": "data_error_title",
+      "value": "本地数据暂时不可用"
+    },
+    {
+      "name": "data_error_description",
+      "value": "你的页面仍可打开，请重试读取本地数据。"
+    },
+    {
+      "name": "retry",
+      "value": "重试"
+    },
+    {
+      "name": "no_today_focus",
+      "value": "今天没有待办"
+    },
+    {
+      "name": "no_today_focus_desc",
+      "value": "此刻可以留给真正重要的事。"
+    },
+    {
+      "name": "course_list_title",
+      "value": "课程管理"
+    },
+    {
+      "name": "course_empty_title",
+      "value": "还没有课程"
+    },
+    {
+      "name": "course_empty_description",
+      "value": "添加课程后，我会在上课前为你准备好信息。"
+    },
+    {
+      "name": "add_course",
+      "value": "添加课程"
+    },
+    {
+      "name": "edit_course",
+      "value": "编辑课程"
+    },
+    {
+      "name": "course_name",
+      "value": "课程名称"
+    },
+    {
+      "name": "course_day",
+      "value": "星期"
+    },
+    {
+      "name": "start_time",
+      "value": "开始时间"
+    },
+    {
+      "name": "end_time",
+      "value": "结束时间"
+    },
+    {
+      "name": "course_location",
+      "value": "教室（可选）"
+    },
+    {
+      "name": "course_teacher",
+      "value": "教师（可选）"
+    },
+    {
+      "name": "course_valid_from",
+      "value": "课程开始日期（可选）"
+    },
+    {
+      "name": "course_valid_until",
+      "value": "课程结束日期（可选）"
+    },
+    {
+      "name": "course_date_placeholder",
+      "value": "YYYY-MM-DD；留空表示不限制"
+    },
+    {
+      "name": "course_reminder",
+      "value": "提前提醒分钟数"
+    },
+    {
+      "name": "course_disabled",
+      "value": "已停用"
+    },
+    {
+      "name": "delete_course_title",
+      "value": "删除这节课程？"
+    },
+    {
+      "name": "delete_course_message",
+      "value": "删除后课程将不再参与场景推荐。"
+    },
+    {
+      "name": "batch_delete",
+      "value": "批量删除"
+    },
+    {
+      "name": "selected_count_label",
+      "value": "已选择"
+    },
+    {
+      "name": "delete_selected_courses",
+      "value": "删除所选课程"
+    },
+    {
+      "name": "batch_delete_select_first",
+      "value": "请至少选择一门课程。"
+    },
+    {
+      "name": "batch_delete_course_title",
+      "value": "删除所选课程？"
+    },
+    {
+      "name": "batch_delete_course_message",
+      "value": "所选课程将被永久删除，并且不再参与场景推荐。"
+    },
+    {
+      "name": "batch_delete_course_done",
+      "value": "所选课程已删除"
+    },
+    {
+      "name": "course_validation_name",
+      "value": "请输入课程名称。"
+    },
+    {
+      "name": "course_validation_time",
+      "value": "请输入合法时间，且开始时间早于结束时间。"
+    },
+    {
+      "name": "course_validation_reminder",
+      "value": "提醒时间不能为负数。"
+    },
+    {
+      "name": "course_validation_date",
+      "value": "请输入合法日期，且开始日期不能晚于结束日期。"
+    },
+    {
+      "name": "import_courses",
+      "value": "导入课程"
+    },
+    {
+      "name": "course_import_title",
+      "value": "导入课程"
+    },
+    {
+      "name": "course_import_source_title",
+      "value": "选择导入来源"
+    },
+    {
+      "name": "import_from_calendar",
+      "value": "从系统日历导入"
+    },
+    {
+      "name": "import_from_calendar_desc",
+      "value": "进入日程选择页面，从所有可访问日历中选择要添加的课程。"
+    },
+    {
+      "name": "import_from_vcs",
+      "value": "从 VCS 文件导入"
+    },
+    {
+      "name": "import_from_vcs_desc",
+      "value": "通过系统文件选择器读取 .vcs 或 .ics 日历文件。"
+    },
+    {
+      "name": "calendar_permission_reason",
+      "value": "用于读取日历事件并由你选择要导入的课程"
+    },
+    {
+      "name": "location_scene_permission_reason",
+      "value": "用于在应用使用期间判断是否进入你设置的地点并切换场景"
+    },
+    {
+      "name": "calendar_permission_denied",
+      "value": "未获得日历读取权限，无法读取日历。你仍可使用 VCS 文件导入。"
+    },
+    {
+      "name": "calendar_import_failed",
+      "value": "暂时无法读取系统日历，请稍后重试。"
+    },
+    {
+      "name": "calendar_import_empty_default",
+      "value": "所有日历中都没有找到可导入的非全天事件。"
+    },
+    {
+      "name": "vcs_import_failed",
+      "value": "无法读取或解析该文件，请选择有效的 VCS/ICS 文件。"
+    },
+    {
+      "name": "course_import_loading",
+      "value": "正在读取课程…"
+    },
+    {
+      "name": "course_import_empty",
+      "value": "没有找到可导入的非全天课程事件。"
+    },
+    {
+      "name": "course_import_preview",
+      "value": "选择要导入的课程"
+    },
+    {
+      "name": "calendar_import_select_title",
+      "value": "选择日程"
+    },
+    {
+      "name": "calendar_import_select_hint",
+      "value": "勾选要添加的课程"
+    },
+    {
+      "name": "calendar_import_selected_label",
+      "value": "已选择"
+    },
+    {
+      "name": "course_import_source_calendar",
+      "value": "来源：系统日历"
+    },
+    {
+      "name": "course_import_source_vcs",
+      "value": "来源：VCS/ICS 文件"
+    },
+    {
+      "name": "course_import_weekly_note",
+      "value": "将按实际开课和结课日期创建课程，并自动识别教师；相同课程会自动合并或跳过。"
+    },
+    {
+      "name": "select_all",
+      "value": "全选"
+    },
+    {
+      "name": "clear_selection",
+      "value": "清空"
+    },
+    {
+      "name": "import_selected_courses",
+      "value": "导入所选课程"
+    },
+    {
+      "name": "course_import_select_first",
+      "value": "请至少选择一门课程。"
+    },
+    {
+      "name": "course_import_save_failed",
+      "value": "课程导入失败，请稍后重试。"
+    },
+    {
+      "name": "course_import_done",
+      "value": "课程已导入"
+    },
+    {
+      "name": "course_import_all_duplicate",
+      "value": "所选课程均已存在"
+    },
+    {
+      "name": "task_list_title",
+      "value": "任务管理"
+    },
+    {
+      "name": "task_empty_title",
+      "value": "今天没有待办"
+    },
+    {
+      "name": "task_empty_description",
+      "value": "此刻可以留给真正重要的事。"
+    },
+    {
+      "name": "add_task",
+      "value": "添加任务"
+    },
+    {
+      "name": "edit_task",
+      "value": "编辑任务"
+    },
+    {
+      "name": "task_title",
+      "value": "任务标题"
+    },
+    {
+      "name": "task_description",
+      "value": "描述（可选）"
+    },
+    {
+      "name": "task_deadline",
+      "value": "截止时间（可选）"
+    },
+    {
+      "name": "task_deadline_hint",
+      "value": "例如 2026-07-22 18:30"
+    },
+    {
+      "name": "task_priority",
+      "value": "优先级"
+    },
+    {
+      "name": "task_scene",
+      "value": "所属场景"
+    },
+    {
+      "name": "all_scenes",
+      "value": "所有场景"
+    },
+    {
+      "name": "show_completed",
+      "value": "显示已完成"
+    },
+    {
+      "name": "hide_completed",
+      "value": "隐藏已完成"
+    },
+    {
+      "name": "complete",
+      "value": "完成"
+    },
+    {
+      "name": "restore",
+      "value": "恢复"
+    },
+    {
+      "name": "delete_task_title",
+      "value": "删除这项任务？"
+    },
+    {
+      "name": "delete_task_message",
+      "value": "删除后将无法恢复。"
+    },
+    {
+      "name": "task_validation_title",
+      "value": "请输入任务标题。"
+    },
+    {
+      "name": "task_validation_due",
+      "value": "截止时间格式应为 YYYY-MM-DD HH:mm。"
+    },
+    {
+      "name": "rule_list_title",
+      "value": "场景时间规则"
+    },
+    {
+      "name": "rule_empty_title",
+      "value": "还没有自动场景规则"
+    },
+    {
+      "name": "rule_empty_description",
+      "value": "创建规则后，此刻会在合适的时间切换场景。"
+    },
+    {
+      "name": "add_rule",
+      "value": "创建规则"
+    },
+    {
+      "name": "edit_rule",
+      "value": "编辑规则"
+    },
+    {
+      "name": "rule_name",
+      "value": "规则名称"
+    },
+    {
+      "name": "rule_days",
+      "value": "生效星期"
+    },
+    {
+      "name": "rule_scene",
+      "value": "目标场景"
+    },
+    {
+      "name": "rule_priority",
+      "value": "优先级（1—20）"
+    },
+    {
+      "name": "delete_rule_title",
+      "value": "删除这条规则？"
+    },
+    {
+      "name": "delete_rule_message",
+      "value": "删除后该规则将不再参与场景推荐。"
+    },
+    {
+      "name": "rule_validation_name",
+      "value": "请输入规则名称。"
+    },
+    {
+      "name": "rule_validation_days",
+      "value": "请至少选择一天。"
+    },
+    {
+      "name": "rule_validation_priority",
+      "value": "优先级必须在 1 到 20 之间。"
+    },
+    {
+      "name": "focus_page_title",
+      "value": "专注"
+    },
+    {
+      "name": "start_focus",
+      "value": "开始专注"
+    },
+    {
+      "name": "focus_25",
+      "value": "25 分钟"
+    },
+    {
+      "name": "focus_45",
+      "value": "45 分钟"
+    },
+    {
+      "name": "focus_custom",
+      "value": "自定义分钟数"
+    },
+    {
+      "name": "focus_history",
+      "value": "历史记录"
+    },
+    {
+      "name": "focus_no_history",
+      "value": "还没有专注记录"
+    },
+    {
+      "name": "focus_completed",
+      "value": "已完成"
+    },
+    {
+      "name": "focus_cancelled",
+      "value": "已提前结束"
+    },
+    {
+      "name": "focus_validation",
+      "value": "专注时长应为 1 到 240 分钟。"
+    },
+    {
+      "name": "focus_already_running",
+      "value": "已有专注正在进行。"
+    },
+    {
+      "name": "onboarding_welcome_eyebrow",
+      "value": "你的此刻，值得被看见"
+    },
+    {
+      "name": "onboarding_title",
+      "value": "欢迎来到“此刻”"
+    },
+    {
+      "name": "onboarding_intro",
+      "value": "不用在日程、任务与时间之间来回寻找。此刻会把眼前最重要的事，恰好放到你面前。"
+    },
+    {
+      "name": "onboarding_benefit_context_title",
+      "value": "跟随你的状态"
+    },
+    {
+      "name": "onboarding_benefit_context_description",
+      "value": "结合时间、课程与选择，呈现适合当下的场景。"
+    },
+    {
+      "name": "onboarding_benefit_priority_title",
+      "value": "先看最重要的事"
+    },
+    {
+      "name": "onboarding_benefit_priority_description",
+      "value": "课程、任务与专注进度，始终按此刻的需要排序。"
+    },
+    {
+      "name": "onboarding_benefit_glance_title",
+      "value": "抬眼就能行动"
+    },
+    {
+      "name": "onboarding_benefit_glance_description",
+      "value": "桌面卡片保留关键提醒，不必反复打开应用。"
+    },
+    {
+      "name": "onboarding_default",
+      "value": "哪种状态最像你的日常？"
+    },
+    {
+      "name": "onboarding_default_description",
+      "value": "先选择一个默认场景，之后仍可随时切换。"
+    },
+    {
+      "name": "onboarding_default_note",
+      "value": "默认场景只是起点；设置课程与规则后，此刻会在合适的时间自动调整。"
+    },
+    {
+      "name": "onboarding_scene_selected",
+      "value": "已选为默认场景"
+    },
+    {
+      "name": "onboarding_get_started",
+      "value": "开始设置"
+    },
+    {
+      "name": "onboarding_continue",
+      "value": "继续"
+    },
+    {
+      "name": "onboarding_back",
+      "value": "返回上一步"
+    },
+    {
+      "name": "onboarding_logo_description",
+      "value": "此刻应用标志"
+    },
+    {
+      "name": "onboarding_add_first",
+      "value": "让此刻先认识一件重要的事"
+    },
+    {
+      "name": "onboarding_add_first_description",
+      "value": "添加一节课程或一项任务，你会立刻看到此刻如何为你整理信息。"
+    },
+    {
+      "name": "onboarding_selected_scene",
+      "value": "默认场景"
+    },
+    {
+      "name": "onboarding_add_course",
+      "value": "添加第一节课程"
+    },
+    {
+      "name": "onboarding_add_course_description",
+      "value": "适合有固定时间、地点与周次的安排"
+    },
+    {
+      "name": "onboarding_add_task",
+      "value": "添加第一项任务"
+    },
+    {
+      "name": "onboarding_add_task_description",
+      "value": "适合待办、截止日期与今天的重点"
+    },
+    {
+      "name": "onboarding_ready_note",
+      "value": "完成后，你可以在首页继续添加内容、切换场景或开始专注。"
+    },
+    {
+      "name": "onboarding_later",
+      "value": "暂时跳过，直接开始"
+    },
+    {
+      "name": "context_rule_list_title",
+      "value": "地点与 Wi-Fi 场景"
+    },
+    {
+      "name": "add_context_rule",
+      "value": "添加环境规则"
+    },
+    {
+      "name": "edit_context_rule",
+      "value": "编辑环境规则"
+    },
+    {
+      "name": "context_rule_empty_title",
+      "value": "还没有环境规则"
+    },
+    {
+      "name": "context_rule_empty_description",
+      "value": "添加地点或 Wi-Fi，进入对应环境时即可提示或自动切换场景。"
+    },
+    {
+      "name": "context_rule_foreground_note",
+      "value": "为保护隐私与电量，地点和 Wi-Fi 仅在应用使用期间检测。"
+    },
+    {
+      "name": "context_rule_name",
+      "value": "规则名称"
+    },
+    {
+      "name": "context_rule_name_placeholder",
+      "value": "例如：到公司"
+    },
+    {
+      "name": "context_target_scene",
+      "value": "切换到场景"
+    },
+    {
+      "name": "context_trigger_type",
+      "value": "触发条件"
+    },
+    {
+      "name": "context_trigger_wifi",
+      "value": "连接 Wi-Fi"
+    },
+    {
+      "name": "context_trigger_location",
+      "value": "进入地点"
+    },
+    {
+      "name": "context_wifi_ssid",
+      "value": "Wi-Fi 名称（SSID）"
+    },
+    {
+      "name": "context_wifi_ssid_placeholder",
+      "value": "请输入要匹配的 Wi-Fi 名称"
+    },
+    {
+      "name": "context_use_current_wifi",
+      "value": "使用当前 Wi-Fi"
+    },
+    {
+      "name": "context_wifi_not_connected",
+      "value": "当前未连接可识别的 Wi-Fi。"
+    },
+    {
+      "name": "context_wifi_disabled",
+      "value": "系统 Wi-Fi 未开启，请开启并连接网络后重试。"
+    },
+    {
+      "name": "context_wifi_permission_missing",
+      "value": "系统未向应用提供 Wi-Fi 信息权限，请确认安装的是最新版本。"
+    },
+    {
+      "name": "context_wifi_timeout",
+      "value": "读取 Wi-Fi 信息超时，请稍后重试。"
+    },
+    {
+      "name": "context_wifi_unavailable",
+      "value": "暂时无法读取当前 Wi-Fi 信息，请断开重连后重试。"
+    },
+    {
+      "name": "context_address",
+      "value": "地点地址"
+    },
+    {
+      "name": "context_address_placeholder",
+      "value": "例如：上海市浦东新区世纪大道 100 号"
+    },
+    {
+      "name": "context_radius",
+      "value": "触发半径（米）"
+    },
+    {
+      "name": "context_radius_placeholder",
+      "value": "100–5000"
+    },
+    {
+      "name": "context_resolve_address",
+      "value": "定位此地址"
+    },
+    {
+      "name": "context_use_current_location",
+      "value": "使用当前位置"
+    },
+    {
+      "name": "context_auto_switch",
+      "value": "自动切换"
+    },
+    {
+      "name": "context_auto_switch_desc",
+      "value": "开启后，命中条件时不再询问，直接切换到该场景。"
+    },
+    {
+      "name": "context_switch_automatic",
+      "value": "命中后自动切换"
+    },
+    {
+      "name": "context_switch_prompt",
+      "value": "命中后先询问"
+    },
+    {
+      "name": "context_working",
+      "value": "处理中…"
+    },
+    {
+      "name": "context_validation_name",
+      "value": "请输入规则名称。"
+    },
+    {
+      "name": "context_validation_wifi",
+      "value": "请输入 1–32 个字符的 Wi-Fi 名称。"
+    },
+    {
+      "name": "context_validation_address",
+      "value": "请输入地点地址。"
+    },
+    {
+      "name": "context_validation_radius",
+      "value": "触发半径应为 100–5000 米的整数。"
+    },
+    {
+      "name": "context_address_not_found",
+      "value": "无法识别该地址，请补充省市区和详细地址。"
+    },
+    {
+      "name": "context_address_timeout",
+      "value": "地址解析超时，请检查网络连接后重试。"
+    },
+    {
+      "name": "context_location_permission_denied",
+      "value": "需要精确位置权限才能添加或检测地点规则。"
+    },
+    {
+      "name": "context_location_disabled",
+      "value": "系统定位服务未开启，请允许开启定位后重试。"
+    },
+    {
+      "name": "context_location_timeout",
+      "value": "定位超时，请到开阔区域或连接网络后重试。"
+    },
+    {
+      "name": "context_location_unavailable",
+      "value": "暂时无法获取当前位置，请确认已开启系统定位。"
+    },
+    {
+      "name": "delete_context_rule_title",
+      "value": "删除这条环境规则？"
+    },
+    {
+      "name": "delete_context_rule_message",
+      "value": "删除后，该地点或 Wi-Fi 将不再触发场景切换。"
+    },
+    {
+      "name": "context_switch_prompt_title",
+      "value": "切换场景？"
+    },
+    {
+      "name": "context_switch_once",
+      "value": "仅这次切换"
+    },
+    {
+      "name": "context_switch_always",
+      "value": "切换并以后自动"
+    },
+    {
+      "name": "context_switch_applied",
+      "value": "已根据当前环境切换场景"
+    },
+    {
+      "name": "save",
+      "value": "保存"
+    },
+    {
+      "name": "edit",
+      "value": "编辑"
+    },
+    {
+      "name": "delete",
+      "value": "删除"
+    },
+    {
+      "name": "cancel",
+      "value": "取消"
+    },
+    {
+      "name": "confirm",
+      "value": "确认"
+    },
+    {
+      "name": "enabled",
+      "value": "启用"
+    },
+    {
+      "name": "disabled",
+      "value": "停用"
+    },
+    {
+      "name": "save_failed",
+      "value": "保存失败，请重试。"
+    },
+    {
+      "name": "operation_failed",
+      "value": "操作失败，请重试。"
+    },
+    {
+      "name": "weekday_sunday",
+      "value": "周日"
+    },
+    {
+      "name": "weekday_monday",
+      "value": "周一"
+    },
+    {
+      "name": "weekday_tuesday",
+      "value": "周二"
+    },
+    {
+      "name": "weekday_wednesday",
+      "value": "周三"
+    },
+    {
+      "name": "weekday_thursday",
+      "value": "周四"
+    },
+    {
+      "name": "weekday_friday",
+      "value": "周五"
+    },
+    {
+      "name": "weekday_saturday",
+      "value": "周六"
+    }
   ]
 }

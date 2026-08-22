@@ -192,6 +192,7 @@ struct TaskEditPage {
             top: AppDimensions.PAGE_TOP_PADDING, bottom: AppDimensions.PAGE_BOTTOM_PADDING })
         }
         .width('100%')
+        .align(Alignment.Top)
         .height('100%')
         .backgroundColor(AppColors.PAGE_BACKGROUND)
       }

@@ -367,6 +367,71 @@ struct Index {
     })
   }
 
+  @Builder
+  private SceneHeroBlock() {
+    Column() {
+      SceneHeroCard({
+        model: this.viewModel,
+        interactionEnabled: !this.isSwitching,
+        onPrimaryAction: () => this.performPrimaryAction(),
+        onSwitchScene: () => this.openSceneSwitcher(),
+        onRestoreAuto: () => this.restoreAutomatic(),
+        onToggleManualLock: () => this.toggleManualLock()
+      })
+    }
+    .width('100%')
+    .opacity(this.contentOpacity)
+    .scale({ x: this.heroScale, y: this.heroScale })
+  }
+
+  @Builder
+  private RunningFocusBlock() {
+    if (this.viewModel.hasRunningFocus) {
+      FocusStatusCard({
+        remainingMinutes: this.viewModel.focusRemainingMinutes,
+        onOpen: () => this.openPage('pages/FocusPage')
+      })
+    }
+  }
+
+  @Builder
+  private TodayFocusBlock() {
+    if (this.viewModel.todayFocus.length > 0) {
+      RankingListSection({ title: $r('app.string.today_focus'), items: this.viewModel.todayFocus })
+    } else {
+      SectionHeader({ title: $r('app.string.today_focus') })
+      EmptyState({
+        title: $r('app.string.no_today_focus'),
+        description: $r('app.string.no_today_focus_desc')
+      })
+    }
+  }
+
+  @Builder
+  private UpcomingBlock() {
+    if (this.viewModel.upcoming.length > 0) {
+      RankingListSection({ title: $r('app.string.upcoming'), items: this.viewModel.upcoming })
+    }
+  }
+
+  @Builder
+  private ManagementBlock() {
+    SectionHeader({ title: $r('app.string.management') })
+    Column() {
+      this.ManagementRow($r('app.string.manage_courses'), $r('sys.symbol.doc'),
+        'pages/CourseListPage', false)
+      this.ManagementRow($r('app.string.manage_tasks'), $r('sys.symbol.checkmark'),
+        'pages/TaskListPage', false)
+      this.ManagementRow($r('app.string.manage_rules'), $r('sys.symbol.clock'),
+        'pages/SceneRuleListPage', false)
+      this.ManagementRow($r('app.string.manage_focus'), $r('sys.symbol.star'),
+        'pages/FocusPage', true)
+    }
+    .width('100%')
+    .borderRadius(AppDimensions.RADIUS_PRIMARY)
+    .systemMaterial(ImmersiveMaterials.CARD)
+  }
+
   build() {
     Stack({ alignContent: Alignment.Top }) {
       Row() {}
@@ -425,59 +490,33 @@ struct Index {
                 if (this.viewModel.hasDataError) {
                   ErrorState({ onRetry: () => this.retryData() })
                 }
-                Column() {
-                  SceneHeroCard({
-                    model: this.viewModel,
-                    interactionEnabled: !this.isSwitching,
-                    onPrimaryAction: () => this.performPrimaryAction(),
-                    onSwitchScene: () => this.openSceneSwitcher(),
-                    onRestoreAuto: () => this.restoreAutomatic(),
-                    onToggleManualLock: () => this.toggleManualLock()
-                  })
+                GridRow({
+                  columns: { xs: 4, sm: 4, md: 12 },
+                  gutter: { x: 24, y: 24 },
+                  breakpoints: { value: ['600vp', '840vp'] }
+                }) {
+                  GridCol({ span: { xs: 4, sm: 4, md: 5 } }) {
+                    Column({ space: 24 }) {
+                      this.SceneHeroBlock()
+                      this.RunningFocusBlock()
+                    }
+                    .width('100%')
+                  }
+
+                  GridCol({ span: { xs: 4, sm: 4, md: 7 } }) {
+                    Column({ space: 24 }) {
+                      this.TodayFocusBlock()
+                      this.UpcomingBlock()
+                      this.ManagementBlock()
+                    }
+                    .width('100%')
+                  }
                 }
                 .width('100%')
-                .opacity(this.contentOpacity)
-                .scale({ x: this.heroScale, y: this.heroScale })
               }
-
-              if (this.viewModel.todayFocus.length > 0) {
-                RankingListSection({ title: $r('app.string.today_focus'), items: this.viewModel.todayFocus })
-              } else {
-                SectionHeader({ title: $r('app.string.today_focus') })
-                EmptyState({
-                  title: $r('app.string.no_today_focus'),
-                  description: $r('app.string.no_today_focus_desc')
-                })
-              }
-
-              if (this.viewModel.upcoming.length > 0) {
-                RankingListSection({ title: $r('app.string.upcoming'), items: this.viewModel.upcoming })
-              }
-
-              if (this.viewModel.hasRunningFocus) {
-                FocusStatusCard({
-                  remainingMinutes: this.viewModel.focusRemainingMinutes,
-                  onOpen: () => this.openPage('pages/FocusPage')
-                })
-              }
-
-              SectionHeader({ title: $r('app.string.management') })
-              Column() {
-                this.ManagementRow($r('app.string.manage_courses'), $r('sys.symbol.doc'),
-                  'pages/CourseListPage', false)
-                this.ManagementRow($r('app.string.manage_tasks'), $r('sys.symbol.checkmark'),
-                  'pages/TaskListPage', false)
-                this.ManagementRow($r('app.string.manage_rules'), $r('sys.symbol.clock'),
-                  'pages/SceneRuleListPage', false)
-                this.ManagementRow($r('app.string.manage_focus'), $r('sys.symbol.star'),
-                  'pages/FocusPage', true)
-              }
-              .width('100%')
-              .borderRadius(AppDimensions.RADIUS_PRIMARY)
-              .systemMaterial(ImmersiveMaterials.CARD)
             }
             .width('100%')
-            .constraintSize({ maxWidth: AppDimensions.MAX_CONTENT_WIDTH })
+            .constraintSize({ maxWidth: AppDimensions.MAX_PAGE_WIDTH })
             .padding({
               left: AppDimensions.PAGE_HORIZONTAL_PADDING,
               right: AppDimensions.PAGE_HORIZONTAL_PADDING,
@@ -489,6 +528,7 @@ struct Index {
           .justifyContent(FlexAlign.Center)
         }
         .width('100%')
+        .align(Alignment.Top)
         .layoutWeight(1)
         .scrollBar(BarState.Off)
         .edgeEffect(EdgeEffect.Spring)

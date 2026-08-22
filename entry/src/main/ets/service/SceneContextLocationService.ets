@@ -6,6 +6,7 @@ const LOCATION_API_TIMEOUT_MS: number = 12000;
 const LOCATION_REQUEST_TIMEOUT_MS: number = 10000;
 const GEOCODE_TIMEOUT_MS: number = 6000;
 const REVERSE_GEOCODE_TIMEOUT_MS: number = 3500;
+const FRESH_LOCATION_MAX_AGE_MS: number = 2 * 60 * 1000;
 const LAST_LOCATION_MAX_AGE_MS: number = 5 * 60 * 1000;
 const LAST_LOCATION_MAX_ACCURACY_METERS: number = 200;
 
@@ -53,6 +54,11 @@ export class SceneContextLocationService {
       AppLogger.error('Unable to inspect the system location switch', error as Object);
       return Promise.resolve(ResolvedSceneLocation.fail('location_unavailable'));
     }
+    const cached: ResolvedSceneLocation = SceneContextLocationService.lastKnownLocation(
+      FRESH_LOCATION_MAX_AGE_MS);
+    if (cached.success) {
+      return Promise.resolve(cached);
+    }
     return new Promise<ResolvedSceneLocation>((resolve: (value: ResolvedSceneLocation) => void) => {
       let finished: boolean = false;
       const timerId: number = setTimeout(() => {
@@ -60,7 +66,7 @@ export class SceneContextLocationService {
           finished = true;
           AppLogger.error('Timed out while obtaining current scene location');
           const fallback: ResolvedSceneLocation = allowLastKnown ?
-            SceneContextLocationService.lastKnownLocation() :
+            SceneContextLocationService.lastKnownLocation(LAST_LOCATION_MAX_AGE_MS) :
             ResolvedSceneLocation.fail('location_timeout');
           resolve(fallback.success ? fallback : ResolvedSceneLocation.fail('location_timeout'));
         }
@@ -83,19 +89,19 @@ export class SceneContextLocationService {
         clearTimeout(timerId);
         AppLogger.error('Unable to obtain current scene location', error);
         const fallback: ResolvedSceneLocation = allowLastKnown ?
-          SceneContextLocationService.lastKnownLocation() :
+          SceneContextLocationService.lastKnownLocation(LAST_LOCATION_MAX_AGE_MS) :
           ResolvedSceneLocation.fail('location_unavailable');
         resolve(fallback.success ? fallback : ResolvedSceneLocation.fail('location_unavailable'));
       });
     });
   }
 
-  private static lastKnownLocation(): ResolvedSceneLocation {
+  private static lastKnownLocation(maxAgeMs: number): ResolvedSceneLocation {
     try {
       const location: geoLocationManager.Location = geoLocationManager.getLastLocation();
       const age: number = Math.max(0, Date.now() - location.timeStamp);
-      if (age <= LAST_LOCATION_MAX_AGE_MS && location.accuracy <= LAST_LOCATION_MAX_ACCURACY_METERS) {
-        AppLogger.info('Using a recent last-known location for scene setup');
+      if (age <= maxAgeMs && location.accuracy <= LAST_LOCATION_MAX_ACCURACY_METERS) {
+        AppLogger.info('Using the cached last-known location for scene context');
         return ResolvedSceneLocation.ok('', location.latitude, location.longitude);
       }
     } catch (error) {

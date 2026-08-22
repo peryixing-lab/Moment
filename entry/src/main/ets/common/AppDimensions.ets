@@ -16,6 +16,7 @@ export class AppDimensions {
   static readonly MIN_TOUCH_TARGET: Resource = $r('app.float.min_touch_target');
   static readonly DIVIDER_WIDTH: Resource = $r('app.float.divider_width');
   static readonly MAX_CONTENT_WIDTH: number = 680;
+  static readonly MAX_PAGE_WIDTH: number = 1200;
   static readonly ANIMATION_DURATION: number = 180;
   static readonly COMPACT_BUTTON_HORIZONTAL_PADDING: number = 2;
   static readonly FORM_BUTTON_HEIGHT: Resource = $r('app.float.form_button_height');

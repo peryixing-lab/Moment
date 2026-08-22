@@ -119,6 +119,7 @@ struct SceneContextRuleListPage {
         menuLabel: $r('app.string.add_context_rule'),
         menuIcon: $r('sys.symbol.plus'),
         scrollController: this.contentScroller,
+        contentMaxWidth: AppDimensions.MAX_PAGE_WIDTH,
         onBack: () => this.getUIContext().getRouter().back(),
         onMenu: () => this.openEditor()
       }) {
@@ -166,8 +167,14 @@ struct SceneContextRuleListPage {
                 .borderRadius(AppDimensions.RADIUS_SECONDARY)
                 .systemMaterial(ImmersiveMaterials.WARNING_SURFACE)
 
-              ForEach(this.rules, (rule: SceneContextRule) => {
-                Column({ space: 14 }) {
+              GridRow({
+                columns: { xs: 1, sm: 1, md: 2 },
+                gutter: 12,
+                breakpoints: { value: ['600vp', '840vp'] }
+              }) {
+                ForEach(this.rules, (rule: SceneContextRule) => {
+                  GridCol({ span: 1 }) {
+                    Column({ space: 14 }) {
                   Row({ space: 12 }) {
                     Column({ space: 5 }) {
                       Text(rule.name)
@@ -222,10 +229,13 @@ struct SceneContextRuleListPage {
                 .padding(AppDimensions.CARD_PADDING)
                 .borderRadius(AppDimensions.RADIUS_PRIMARY)
                 .systemMaterial(ImmersiveMaterials.CARD)
-              }, (rule: SceneContextRule) => rule.id.toString())
+                  }
+                }, (rule: SceneContextRule) => rule.id.toString())
+              }
+              .width('100%')
             }
             .width('100%')
-            .constraintSize({ maxWidth: AppDimensions.MAX_CONTENT_WIDTH })
+            .constraintSize({ maxWidth: AppDimensions.MAX_PAGE_WIDTH })
             .padding({
               left: AppDimensions.PAGE_HORIZONTAL_PADDING,
               right: AppDimensions.PAGE_HORIZONTAL_PADDING,
@@ -234,6 +244,7 @@ struct SceneContextRuleListPage {
             })
           }
           .width('100%')
+          .align(Alignment.Top)
           .height('100%')
           .scrollBar(BarState.Off)
         }

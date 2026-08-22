@@ -214,6 +214,7 @@ struct CourseListPage {
         menuLabel: this.isSelecting ? $r('app.string.cancel') : $r('app.string.add_course'),
         menuIcon: this.isSelecting ? $r('sys.symbol.xmark') : $r('sys.symbol.plus'),
         scrollController: this.contentScroller,
+        contentMaxWidth: AppDimensions.MAX_PAGE_WIDTH,
         onBack: () => this.getUIContext().getRouter().back(),
         onMenu: () => {
           if (this.isSelecting) {
@@ -301,10 +302,15 @@ struct CourseListPage {
           .attributeModifier(HDS_PRIMARY_BUTTON)
           .onClick(() => this.openEditor())
       } else {
-        List({ space: 12, scroller: this.contentScroller }) {
-          ForEach(this.courses, (course: Course) => {
-            ListItem() {
-              Column({ space: 12 }) {
+        Scroll(this.contentScroller) {
+          GridRow({
+            columns: { xs: 1, sm: 1, md: 2 },
+            gutter: 12,
+            breakpoints: { value: ['600vp', '840vp'] }
+          }) {
+            ForEach(this.courses, (course: Course) => {
+              GridCol({ span: 1 }) {
+                Column({ space: 12 }) {
                 Row() {
                   if (this.isSelecting) {
                     Toggle({ type: ToggleType.Checkbox, isOn: this.selectedIds.indexOf(course.id) >= 0 })
@@ -379,12 +385,16 @@ struct CourseListPage {
               .padding(AppDimensions.CARD_PADDING)
               .borderRadius(AppDimensions.RADIUS_PRIMARY)
               .systemMaterial(ImmersiveMaterials.CARD)
-            }
-          }, (course: Course) => course.id.toString())
+              }
+            }, (course: Course) => course.id.toString())
+          }
+          .width('100%')
         }
         .width('100%')
         .layoutWeight(1)
+        .align(Alignment.Top)
         .scrollBar(BarState.Off)
+        .edgeEffect(EdgeEffect.Spring)
           }
         }
         .width('100%')

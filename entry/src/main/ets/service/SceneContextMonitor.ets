@@ -117,10 +117,14 @@ export class SceneContextMonitor {
       const needsWifi: boolean = this.hasType(rules, SceneContextTriggerType.WIFI);
       const needsLocation: boolean = this.hasType(rules, SceneContextTriggerType.LOCATION) &&
         SceneContextPermissionService.hasPreciseLocationPermission();
-      const wifiResult: ResolvedSceneWifi = needsWifi ?
-        await SceneContextWifiService.currentWifi() : ResolvedSceneWifi.fail('not_needed');
-      const location: ResolvedSceneLocation | undefined = needsLocation ?
-        await SceneContextLocationService.currentCoordinates() : undefined;
+      const wifiTask: Promise<ResolvedSceneWifi> = needsWifi ?
+        SceneContextWifiService.currentWifi() :
+        Promise.resolve(ResolvedSceneWifi.fail('not_needed'));
+      const locationTask: Promise<ResolvedSceneLocation | undefined> = needsLocation ?
+        SceneContextLocationService.currentCoordinates(true) :
+        Promise.resolve<ResolvedSceneLocation | undefined>(undefined);
+      const wifiResult: ResolvedSceneWifi = await wifiTask;
+      const location: ResolvedSceneLocation | undefined = await locationTask;
       const ssid: string = wifiResult.success ? wifiResult.ssid : '';
       const matches: SceneContextRule[] = this.matchingRules(rules, ssid, location);
       this.handleMatches(matches);
@@ -203,7 +207,7 @@ export class SceneContextMonitor {
         if (ssid.length > 0 && rule.wifiSsid === ssid) {
           matches.push(rule);
         }
-      } else if (location !== undefined) {
+      } else if (location !== undefined && location.success) {
         const distance: number = SceneContextMonitor.distanceMeters(
           location.latitude, location.longitude, rule.latitude, rule.longitude);
         if (distance <= rule.radiusMeters) {

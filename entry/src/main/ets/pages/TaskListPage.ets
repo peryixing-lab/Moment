@@ -141,6 +141,7 @@ struct TaskListPage {
         menuLabel: $r('app.string.add_task'),
         menuIcon: $r('sys.symbol.plus'),
         scrollController: this.contentScroller,
+        contentMaxWidth: AppDimensions.MAX_PAGE_WIDTH,
         onBack: () => this.getUIContext().getRouter().back(),
         onMenu: () => this.openEditor()
       }) {
@@ -204,10 +205,15 @@ struct TaskListPage {
           .attributeModifier(HDS_PRIMARY_BUTTON)
           .onClick(() => this.openEditor())
       } else {
-        List({ space: 12, scroller: this.contentScroller }) {
-          ForEach(this.tasks, (task: LocalTask) => {
-            ListItem() {
-              Column({ space: 12 }) {
+        Scroll(this.contentScroller) {
+          GridRow({
+            columns: { xs: 1, sm: 1, md: 2 },
+            gutter: 12,
+            breakpoints: { value: ['600vp', '840vp'] }
+          }) {
+            ForEach(this.tasks, (task: LocalTask) => {
+              GridCol({ span: 1 }) {
+                Column({ space: 12 }) {
                 Column({ space: 5 }) {
                   Row({ space: 8 }) {
                     Text(this.priorityLabel(task.priority))
@@ -274,12 +280,16 @@ struct TaskListPage {
               .padding(AppDimensions.CARD_PADDING)
               .borderRadius(AppDimensions.RADIUS_PRIMARY)
               .systemMaterial(ImmersiveMaterials.CARD)
-            }
-          }, (task: LocalTask) => task.id.toString())
+              }
+            }, (task: LocalTask) => task.id.toString())
+          }
+          .width('100%')
         }
         .width('100%')
         .layoutWeight(1)
+        .align(Alignment.Top)
         .scrollBar(BarState.Off)
+        .edgeEffect(EdgeEffect.Spring)
           }
         }
         .width('100%')

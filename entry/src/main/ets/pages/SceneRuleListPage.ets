@@ -130,6 +130,7 @@ struct SceneRuleListPage {
         menuLabel: $r('app.string.add_rule'),
         menuIcon: $r('sys.symbol.plus'),
         scrollController: this.contentScroller,
+        contentMaxWidth: AppDimensions.MAX_PAGE_WIDTH,
         onBack: () => this.getUIContext().getRouter().back(),
         onMenu: () => this.openEditor()
       }) {
@@ -152,10 +153,15 @@ struct SceneRuleListPage {
           .attributeModifier(HDS_PRIMARY_BUTTON)
           .onClick(() => this.openEditor())
       } else {
-        List({ space: 12, scroller: this.contentScroller }) {
-          ForEach(this.rules, (rule: SceneRule) => {
-            ListItem() {
-              Column({ space: 12 }) {
+        Scroll(this.contentScroller) {
+          GridRow({
+            columns: { xs: 1, sm: 1, md: 2 },
+            gutter: 12,
+            breakpoints: { value: ['600vp', '840vp'] }
+          }) {
+            ForEach(this.rules, (rule: SceneRule) => {
+              GridCol({ span: 1 }) {
+                Column({ space: 12 }) {
                 Row() {
                   Column({ space: 6 }) {
                     Text(rule.name)
@@ -208,12 +214,16 @@ struct SceneRuleListPage {
               .padding(AppDimensions.CARD_PADDING)
               .borderRadius(AppDimensions.RADIUS_PRIMARY)
               .systemMaterial(ImmersiveMaterials.CARD)
-            }
-          }, (rule: SceneRule) => rule.id.toString())
+              }
+            }, (rule: SceneRule) => rule.id.toString())
+          }
+          .width('100%')
         }
         .width('100%')
         .layoutWeight(1)
+        .align(Alignment.Top)
         .scrollBar(BarState.Off)
+        .edgeEffect(EdgeEffect.Spring)
           }
         }
         .width('100%')

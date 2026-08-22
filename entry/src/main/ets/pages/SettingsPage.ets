@@ -279,6 +279,7 @@ struct SettingsPage {
           .justifyContent(FlexAlign.Center)
         }
         .width('100%')
+        .align(Alignment.Top)
         .height('100%')
         .scrollBar(BarState.Off)
         .backgroundColor(AppColors.PAGE_BACKGROUND)

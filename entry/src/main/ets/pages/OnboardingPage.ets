@@ -512,6 +512,7 @@ struct OnboardingPage {
             .padding({ top: 12, bottom: 16 })
           }
           .width('100%')
+          .align(Alignment.Top)
           .layoutWeight(1)
           .scrollBar(BarState.Off)
           .edgeEffect(EdgeEffect.Spring)

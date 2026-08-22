@@ -6,7 +6,7 @@ import { ImmersiveMaterials } from '../common/ImmersiveMaterials';
 @Component
 export struct FormField {
   label: Resource = $r('app.string.task_title');
-  value: string = '';
+  @Prop value: string = '';
   placeholder: Resource = $r('app.string.task_title');
   inputType: InputType = InputType.Normal;
   onValueChange: (value: string) => void = () => {};
