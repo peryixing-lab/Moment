@@ -494,38 +494,43 @@ struct OnboardingPage {
         .height('100%')
         .backgroundColor(AppColors.PAGE_BACKGROUND)
 
-      Column({ space: 12 }) {
-        this.StepHeader()
+      Row() {
+        Column({ space: 12 }) {
+          this.StepHeader()
 
-        Scroll() {
-          Column() {
-            if (this.step === 1) {
-              this.WelcomeStep()
-            } else if (this.step === 2) {
-              this.SceneStep()
-            } else {
-              this.FirstItemStep()
+          Scroll() {
+            Column() {
+              if (this.step === 1) {
+                this.WelcomeStep()
+              } else if (this.step === 2) {
+                this.SceneStep()
+              } else {
+                this.FirstItemStep()
+              }
             }
+            .width('100%')
+            .padding({ top: 12, bottom: 16 })
           }
           .width('100%')
-          .padding({ top: 12, bottom: 16 })
+          .layoutWeight(1)
+          .scrollBar(BarState.Off)
+          .edgeEffect(EdgeEffect.Spring)
+
+          this.Footer()
         }
         .width('100%')
-        .layoutWeight(1)
-        .scrollBar(BarState.Off)
-        .edgeEffect(EdgeEffect.Spring)
-
-        this.Footer()
+        .height('100%')
+        .constraintSize({ maxWidth: 560 })
+        .padding({
+          left: AppDimensions.PAGE_HORIZONTAL_PADDING,
+          right: AppDimensions.PAGE_HORIZONTAL_PADDING,
+          top: this.topAvoidVp + 12,
+          bottom: this.bottomAvoidVp + 16
+        })
       }
       .width('100%')
       .height('100%')
-      .constraintSize({ maxWidth: 560 })
-      .padding({
-        left: AppDimensions.PAGE_HORIZONTAL_PADDING,
-        right: AppDimensions.PAGE_HORIZONTAL_PADDING,
-        top: this.topAvoidVp + 12,
-        bottom: this.bottomAvoidVp + 16
-      })
+      .justifyContent(FlexAlign.Center)
     }
     .width('100%')
     .height('100%')

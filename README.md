@@ -29,6 +29,16 @@ Moment 是一款面向 HarmonyOS 的场景化信息应用。它会结合时间�
 - HarmonyOS SDK API 26
 - Hypium / Hamock 测试依赖
 
+## 2in1（PC）适配
+
+应用支持在 2in1 设备上以自由窗口运行，遵循华为官方《PC 窗口适配开发实践》：
+
+- `deviceTypes` 声明 `2in1`，支持自由窗口、二分屏与最大化。
+- 通过 `ohos.ability.window.*` metadata 配置首次启动的默认窗口大小（720×1080vp）并居中显示，避免代码 resize 造成窗口跳变。
+- 开启窗口记忆（`setWindowRectAutoSave(true)`），重启后恢复用户上次的窗口大小和位置。
+- 按设计规范将窗口最小尺寸限制为 360×240vp，保证二分屏正常使用。
+- 保留系统标题栏三键，页面内容布局不变。
+
 ## 项目结构
 
 ```text

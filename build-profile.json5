@@ -17,10 +17,25 @@
     ],
     "buildModeSet": [
       {
-        "name": "debug",
+        "name": "debug"
       },
       {
         "name": "release"
+      }
+    ],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "storeFile": "/Users/thousandmiles/Desktop/clock/cike.p12",
+          "storePassword": "0000001D47E68985812B84539EB0818B77A7EE44B8C14AEBB1C1DA1FB554880D27B5F48B96E2CD7332F041FE29",
+          "keyAlias": "cike",
+          "keyPassword": "0000001DAC419FD1F296AEE833080F0E76D5496F1418730B0082E9A3E480C6B3C626027FA74B481A8BCF34CFC9",
+          "signAlg": "SHA256withECDSA",
+          "profile": "/Users/thousandmiles/Desktop/clock/cikeDebug.p7b",
+          "certpath": "/Users/thousandmiles/Desktop/clock/cike.cer"
+        }
       }
     ]
   },

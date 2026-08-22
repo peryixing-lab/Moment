@@ -5,7 +5,9 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
-      "phone"
+      "phone",
+      "tablet",
+      "2in1"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -67,6 +69,29 @@
         "startWindowIcon": "$media:startIcon",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
+        "supportWindowMode": [
+          "fullscreen",
+          "split",
+          "floating"
+        ],
+        "metadata": [
+          {
+            "name": "ohos.ability.window.width",
+            "value": "720"
+          },
+          {
+            "name": "ohos.ability.window.height",
+            "value": "1080"
+          },
+          {
+            "name": "ohos.ability.window.left",
+            "value": "center"
+          },
+          {
+            "name": "ohos.ability.window.top",
+            "value": "center"
+          }
+        ],
         "skills": [
           {
             "entities": [

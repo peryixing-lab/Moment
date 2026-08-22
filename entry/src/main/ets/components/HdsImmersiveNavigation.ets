@@ -7,6 +7,7 @@ import {
 } from '@kit.UIDesignKit';
 import { common } from '@kit.AbilityKit';
 import { AppColors } from '../common/AppColors';
+import { AppDimensions } from '../common/AppDimensions';
 
 /**
  * HDS page title bar with the system-managed immersive-light material.
@@ -80,11 +81,17 @@ export struct HdsImmersiveNavigation {
           [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
 
       HdsNavigation() {
-        Stack() {
-          this.content()
+        Row() {
+          Stack() {
+            this.content()
+          }
+          .width('100%')
+          .height('100%')
+          .constraintSize({ maxWidth: AppDimensions.MAX_CONTENT_WIDTH })
         }
         .width('100%')
         .height('100%')
+        .justifyContent(FlexAlign.Center)
       }
       .mode(NavigationMode.Stack)
       .titleBar({

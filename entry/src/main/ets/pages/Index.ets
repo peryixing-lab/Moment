@@ -35,6 +35,7 @@ struct Index {
   @State private heroScale: number = 1;
   @State private isSceneSwitcherShown: boolean = false;
   @State private topAvoidVp: number = 40;
+  @State private bottomAvoidVp: number = 44;
   private lastLoadAt: number = 0;
   private onboardingNavigationStarted: boolean = false;
   private openSceneSwitcherOnShow: boolean = false;
@@ -92,8 +93,12 @@ struct Index {
         mainWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
       const cutoutArea: window.AvoidArea =
         mainWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_CUTOUT);
+      const gestureArea: window.AvoidArea =
+        mainWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM_GESTURE);
       const topHeightPx: number = Math.max(systemArea.topRect.height, cutoutArea.topRect.height);
+      const bottomHeightPx: number = Math.max(systemArea.bottomRect.height, gestureArea.bottomRect.height);
       this.topAvoidVp = Math.max(0, this.getUIContext().px2vp(topHeightPx));
+      this.bottomAvoidVp = Math.max(44, this.getUIContext().px2vp(bottomHeightPx));
     } catch (error) {
       AppLogger.error('Unable to refresh the home-page avoid area', error as Object);
     }
@@ -477,7 +482,7 @@ struct Index {
               left: AppDimensions.PAGE_HORIZONTAL_PADDING,
               right: AppDimensions.PAGE_HORIZONTAL_PADDING,
               top: this.topAvoidVp + 12,
-              bottom: AppDimensions.PAGE_BOTTOM_PADDING
+              bottom: this.bottomAvoidVp
             })
           }
           .width('100%')

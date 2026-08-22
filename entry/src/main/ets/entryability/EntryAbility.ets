@@ -197,12 +197,42 @@ export default class EntryAbility extends UIAbility {
     AppLogger.info('Ability destroyed');
   }
 
+  private applyFreeWindowSupport(mainWindow: window.Window, windowStage: window.WindowStage): void {
+    try {
+      windowStage.setWindowRectAutoSave(true)
+        .then(() => {
+          AppLogger.info('Enabled the free-window rect auto-save');
+        })
+        .catch((err: Object) => {
+          AppLogger.error('Unable to enable the free-window rect auto-save', err);
+        });
+    } catch (err) {
+      AppLogger.error('Unable to configure the free-window rect auto-save', err as Object);
+    }
+    try {
+      const limits: window.WindowLimits = {
+        minWidth: 360,
+        minHeight: 240
+      };
+      mainWindow.setWindowLimits(limits)
+        .then((applied: window.WindowLimits) => {
+          AppLogger.info(`Applied the free-window size limit ${applied.minWidth}x${applied.minHeight}`);
+        })
+        .catch((err: Object) => {
+          AppLogger.error('Unable to apply the free-window size limit', err);
+        });
+    } catch (err) {
+      AppLogger.error('Unable to configure the free-window size limit', err as Object);
+    }
+  }
+
   onWindowStageCreate(windowStage: window.WindowStage): void {
     AppLogger.info('Main window stage created');
 
     try {
       this.mainWindow = windowStage.getMainWindowSync();
       this.applyWindowTheme(this.mainWindow);
+      this.applyFreeWindowSupport(this.mainWindow, windowStage);
     } catch (err) {
       AppLogger.error('Unable to configure the main window', err as Object);
     }
