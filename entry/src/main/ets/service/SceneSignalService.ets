@@ -11,6 +11,7 @@ import { SceneContextStateRepository } from '../repository/SceneContextStateRepo
 import { CourseService } from './CourseService';
 import { SceneContextRuleService } from './SceneContextRuleService';
 import { SceneRuleService } from './SceneRuleService';
+import { SystemLinkageService } from './SystemLinkageService';
 
 export class SceneSignalBundle {
   settings: AppSettings = AppSettings.defaults();
@@ -33,6 +34,9 @@ export class SceneSignalService {
         bundle.settings.manualSceneActivatedAt = 0;
         bundle.settings.manualSceneExpireAt = 0;
         bundle.settings.manualSceneLocked = false;
+        if (new SceneContextStateRepository(context).load() === undefined) {
+          SystemLinkageService.applySceneExit(context);
+        }
         AppLogger.info('Expired manual scene was cleared');
       } else {
         bundle.storageReady = false;

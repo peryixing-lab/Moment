@@ -24,4 +24,5 @@ export class AppColors {
   static readonly WARNING_TEXT: Resource = $r('app.color.warning_text');
   static readonly DANGER: Resource = $r('app.color.danger');
   static readonly DANGER_MATERIAL_TINT: Resource = $r('app.color.danger_material_tint');
+  static readonly BRAND_RED_TINT: Resource = $r('app.color.brand_red_tint');
 }

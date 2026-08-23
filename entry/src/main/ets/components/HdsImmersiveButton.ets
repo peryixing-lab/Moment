@@ -10,7 +10,8 @@ export enum HdsImmersiveButtonType {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   ICON_ONLY = 'iconOnly',
-  DANGER = 'danger'
+  DANGER = 'danger',
+  BRAND_RED = 'brandRed'
 }
 
 export class HdsImmersiveButtonModifier implements AttributeModifier<ButtonAttribute> {
@@ -48,6 +49,9 @@ export class HdsImmersiveButtonModifier implements AttributeModifier<ButtonAttri
     if (this.buttonType === HdsImmersiveButtonType.DANGER) {
       return ImmersiveMaterials.DANGER_ACTION;
     }
+    if (this.buttonType === HdsImmersiveButtonType.BRAND_RED) {
+      return ImmersiveMaterials.BRAND_RED_ACTION;
+    }
     return ImmersiveMaterials.SECONDARY_ACTION;
   }
 
@@ -72,3 +76,6 @@ export const HDS_ICON_ONLY_BUTTON: HdsImmersiveButtonModifier =
 
 export const HDS_DANGER_BUTTON: HdsImmersiveButtonModifier =
   new HdsImmersiveButtonModifier(HdsImmersiveButtonType.DANGER);
+
+export const HDS_BRAND_RED_BUTTON: HdsImmersiveButtonModifier =
+  new HdsImmersiveButtonModifier(HdsImmersiveButtonType.BRAND_RED);

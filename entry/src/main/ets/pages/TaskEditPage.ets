@@ -1,6 +1,7 @@
 import { common } from '@kit.AbilityKit';
 import { AppColors } from '../common/AppColors';
 import { AppDimensions } from '../common/AppDimensions';
+import { AppLogger } from '../common/AppLogger';
 import { AppTypography } from '../common/AppTypography';
 import { ImmersiveMaterials } from '../common/ImmersiveMaterials';
 import { TimeUtils } from '../common/TimeUtils';
@@ -10,6 +11,7 @@ import { HdsImmersiveNavigation } from '../components/HdsImmersiveNavigation';
 import { OperationResult } from '../model/ServiceModels';
 import { SceneType } from '../model/SceneType';
 import { LocalTask, TaskPriority } from '../model/TaskModels';
+import { CloudSyncService } from '../service/CloudSyncService';
 import { FormRefreshCoordinator } from '../service/FormRefreshCoordinator';
 import { ScenePresentationService } from '../service/ScenePresentationService';
 import { TaskService } from '../service/TaskService';
@@ -21,6 +23,7 @@ struct TaskEditPage {
   @State private title: string = '';
   @State private description: string = '';
   @State private dueText: string = '';
+  @State private dueAt: number = 0;
   @State private priority: TaskPriority = TaskPriority.MEDIUM;
   @State private sceneType: SceneType | undefined = undefined;
   @State private errorMessage: Resource | undefined = undefined;
@@ -54,9 +57,49 @@ struct TaskEditPage {
     this.taskId = task.id;
     this.title = task.title;
     this.description = task.description;
+    this.dueAt = task.dueAt;
     this.dueText = task.dueAt > 0 ? TimeUtils.formatDateTime(task.dueAt) : '';
     this.priority = task.priority;
     this.sceneType = task.sceneType;
+  }
+
+  private showDatePicker(): void {
+    const initial: Date = this.dueAt > 0 ? new Date(this.dueAt) : new Date();
+    this.getUIContext().showDatePickerDialog({
+      start: new Date(2000, 0, 1),
+      end: new Date(2100, 11, 31),
+      selected: initial,
+      lunar: false,
+      onDateAccept: (value: Date) => {
+        const base: Date = this.dueAt > 0 ? new Date(this.dueAt) : new Date();
+        const picked: Date = new Date(
+          value.getFullYear(), value.getMonth(), value.getDate(),
+          base.getHours(), base.getMinutes());
+        this.applyDueAt(picked.getTime());
+        this.showTimePicker(picked);
+      }
+    });
+  }
+
+  private showTimePicker(base: Date): void {
+    this.getUIContext().showTimePickerDialog({
+      selected: base,
+      useMilitaryTime: true,
+      onAccept: (value: TimePickerResult) => {
+        const picked: Date = new Date(base.getFullYear(), base.getMonth(),
+          base.getDate(), value.hour ?? base.getHours(),
+          value.minute ?? base.getMinutes());
+        this.applyDueAt(picked.getTime());
+      }
+    });
+  }
+
+  private applyDueAt(value: number): void {
+    if (!Number.isFinite(value)) {
+      return;
+    }
+    this.dueAt = value;
+    this.dueText = TimeUtils.formatDateTime(value);
   }
 
   private save(): void {
@@ -65,8 +108,7 @@ struct TaskEditPage {
       this.errorMessage = $r('app.string.save_failed');
       return;
     }
-    const dueAt: number = TimeUtils.parseDateTime(this.dueText);
-    if (dueAt < 0) {
+    if (this.dueAt <= 0) {
       this.errorMessage = $r('app.string.task_validation_due');
       return;
     }
@@ -75,7 +117,7 @@ struct TaskEditPage {
     task.id = this.taskId;
     task.title = this.title.trim();
     task.description = this.description.trim();
-    task.dueAt = dueAt;
+    task.dueAt = this.dueAt;
     task.priority = this.priority;
     task.sceneType = this.sceneType;
     const result: OperationResult = service.saveTask(task);
@@ -85,6 +127,9 @@ struct TaskEditPage {
       return;
     }
     FormRefreshCoordinator.schedule(context, 'task_saved');
+    CloudSyncService.triggerAutoSync(context).catch((error: Object) => {
+      AppLogger.error('Auto cloud sync failed', error);
+    });
     this.getUIContext().getRouter().back();
   }
 
@@ -127,8 +172,34 @@ struct TaskEditPage {
         FormField({ label: $r('app.string.task_description'), value: this.description,
           placeholder: $r('app.string.task_description'),
           onValueChange: (value: string) => this.description = value })
-        FormField({ label: $r('app.string.task_deadline'), value: this.dueText,
-          placeholder: $r('app.string.task_deadline_hint'), onValueChange: (value: string) => this.dueText = value })
+        FormField({ label: $r('app.string.task_description'), value: this.description,
+          placeholder: $r('app.string.task_description'),
+          onValueChange: (value: string) => this.description = value })
+        Column({ space: 7 }) {
+          Text($r('app.string.task_deadline'))
+            .width('100%')
+            .fontSize(AppTypography.CAPTION)
+            .fontWeight(FontWeight.Medium)
+            .fontColor(AppColors.TEXT_SECONDARY)
+          Row({ space: 8 }) {
+            Text(this.dueText.length > 0 ? this.dueText : $r('app.string.task_deadline_hint'))
+              .fontSize(AppTypography.BODY_MEDIUM)
+              .fontColor(this.dueText.length > 0 ? AppColors.TEXT_PRIMARY : AppColors.TEXT_TERTIARY)
+              .maxLines(1)
+              .layoutWeight(1)
+            SymbolGlyph($r('sys.symbol.chevron_right'))
+              .fontSize(16)
+              .fontColor([AppColors.TEXT_TERTIARY])
+          }
+          .width('100%')
+          .height(AppDimensions.BUTTON_HEIGHT)
+          .padding({ left: 12, right: 12 })
+          .borderRadius(AppDimensions.RADIUS_SECONDARY)
+          .systemMaterial(ImmersiveMaterials.INPUT)
+          .onClick(() => this.showDatePicker())
+        }
+        .width('100%')
+        .alignItems(HorizontalAlign.Start)
 
         Column({ space: 8 }) {
           Text($r('app.string.task_priority'))

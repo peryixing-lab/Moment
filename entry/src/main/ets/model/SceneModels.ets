@@ -1,5 +1,10 @@
 import { SceneType } from './SceneType';
 
+export enum AppMode {
+  FULL = 'full',
+  LITE = 'lite'
+}
+
 export enum SceneSource {
   MANUAL = 'manual',
   CONTEXT_RULE = 'context_rule',
@@ -94,11 +99,13 @@ export class AppSettings {
   showSecondaryInfo: boolean = true;
   lastSceneUpdateTime: number = 0;
   onboardingCompleted: boolean = false;
+  appMode: AppMode = AppMode.FULL;
+  autoSyncEnabled: boolean = true;
 
   static create(autoRecommendationEnabled: boolean, defaultScene: SceneType,
     manualScene: SceneType | undefined, manualSceneActivatedAt: number, manualSceneExpireAt: number,
     manualSceneLocked: boolean, showSecondaryInfo: boolean, lastSceneUpdateTime: number,
-    onboardingCompleted: boolean): AppSettings {
+    onboardingCompleted: boolean, appMode: AppMode, autoSyncEnabled: boolean): AppSettings {
     const settings: AppSettings = new AppSettings();
     settings.autoRecommendationEnabled = autoRecommendationEnabled;
     settings.defaultScene = defaultScene;
@@ -109,12 +116,14 @@ export class AppSettings {
     settings.showSecondaryInfo = showSecondaryInfo;
     settings.lastSceneUpdateTime = lastSceneUpdateTime;
     settings.onboardingCompleted = onboardingCompleted;
+    settings.appMode = appMode;
+    settings.autoSyncEnabled = autoSyncEnabled;
     return settings;
   }
 
   static defaults(onboardingCompleted: boolean = false): AppSettings {
     return AppSettings.create(true, SceneType.LIBRARY, undefined, 0, 0, false, true, 0,
-      onboardingCompleted);
+      onboardingCompleted, AppMode.FULL, true);
   }
 }
 

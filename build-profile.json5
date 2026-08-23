@@ -29,13 +29,13 @@
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "certpath": "/Users/thousandmiles/Desktop/证书/moment2.cer",
+          "storeFile": "/Users/thousandmiles/Desktop/证书/moment-test/moment.p12",
+          "storePassword": "0000001D9CCB21355E9FEBA4629C7EF551A6EA753FAA5ED82ED48E02149538581443D8C3C6CD608037E6B9E5DE",
           "keyAlias": "moment",
-          "keyPassword": "0000001D79FA8B56744450F384A674FF0B5670E99E672911DA1DC95F5C8B85EC288A1D76983274802EEA3A442A",
-          "profile": "/Users/thousandmiles/Desktop/证书/moment2Debug.p7b",
+          "keyPassword": "0000001D5269F9B939998566623F2D3C7CA20C7CADE4D36C63212C6C42EC66C9BC2B998684ED7D21D74EC701C0",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "/Users/thousandmiles/Desktop/证书/moment.p12",
-          "storePassword": "0000001D8C13AA20EEC6D1CBC079C3DF1D949735FB5818BC2C56620D1A5E668C70571379EC19BC000EA79012CF"
+          "profile": "/Users/thousandmiles/Desktop/证书/moment-test/moment2Debug.p7b",
+          "certpath": "/Users/thousandmiles/Desktop/证书/moment-test/moment2.cer"
         }
       }
     ]

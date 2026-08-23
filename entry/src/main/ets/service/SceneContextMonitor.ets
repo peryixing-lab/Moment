@@ -15,6 +15,7 @@ import { SceneContextPermissionService } from './SceneContextPermissionService';
 import { SceneContextLocationService } from './SceneContextLocationService';
 import { SceneContextRuleService } from './SceneContextRuleService';
 import { SceneContextWifiService } from './SceneContextWifiService';
+import { SystemLinkageService } from './SystemLinkageService';
 
 const EARTH_RADIUS_METERS: number = 6371000;
 const RECHECK_INTERVAL_MS: number = 60000;
@@ -82,6 +83,7 @@ export class SceneContextMonitor {
       this.promptedRuleId = 0;
       this.dismissedRuleId = 0;
       this.onStateChanged();
+      SystemLinkageService.applySceneEntry(this.context);
     }
     return activated;
   }
@@ -232,6 +234,7 @@ export class SceneContextMonitor {
       if (active !== undefined) {
         stateRepository.clear();
         this.onStateChanged();
+        SystemLinkageService.applySceneExit(this.context);
       }
       this.dismissedRuleId = 0;
       this.promptedRuleId = 0;
@@ -254,6 +257,7 @@ export class SceneContextMonitor {
         this.promptedRuleId = 0;
         this.dismissedRuleId = 0;
         this.onStateChanged();
+        SystemLinkageService.applySceneEntry(this.context);
       }
       return;
     }
@@ -270,6 +274,7 @@ export class SceneContextMonitor {
       new SceneContextStateRepository(this.context);
     if (stateRepository.load() !== undefined && stateRepository.clear()) {
       this.onStateChanged();
+      SystemLinkageService.applySceneExit(this.context);
     }
   }
 

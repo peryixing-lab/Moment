@@ -1,7 +1,7 @@
 import { common } from '@kit.AbilityKit';
 import { preferences } from '@kit.ArkData';
 import { AppLogger } from '../common/AppLogger';
-import { AppSettings, SettingsReadResult } from '../model/SceneModels';
+import { AppMode, AppSettings, SettingsReadResult } from '../model/SceneModels';
 import { SceneType, SceneTypeCodec } from '../model/SceneType';
 
 const STORE_NAME: string = 'moment_settings';
@@ -14,6 +14,8 @@ const KEY_MANUAL_LOCKED: string = 'manualSceneLocked';
 const KEY_SHOW_SECONDARY: string = 'showSecondaryInfo';
 const KEY_LAST_UPDATE: string = 'lastSceneUpdateTime';
 const KEY_ONBOARDING: string = 'onboardingCompleted';
+const KEY_APP_MODE: string = 'appMode';
+const KEY_AUTO_SYNC: string = 'autoSyncEnabled';
 const EMPTY_SCENE: string = '';
 const DEFAULT_MANUAL_DURATION_MINUTES: number = 120;
 const MANUAL_DURATION_MS: number = DEFAULT_MANUAL_DURATION_MINUTES * 60 * 1000;
@@ -71,6 +73,8 @@ export class SettingsRepository {
       const manualValue: string = this.readString(store, KEY_MANUAL_SCENE, EMPTY_SCENE);
       const manualScene: SceneType | undefined = manualValue.length === 0 ? undefined :
         SceneTypeCodec.fromStorage(manualValue, defaultScene);
+      const appModeValue: string = this.readString(store, KEY_APP_MODE, AppMode.FULL);
+      const appMode: AppMode = appModeValue === AppMode.LITE ? AppMode.LITE : AppMode.FULL;
       const settings: AppSettings = AppSettings.create(
         this.readBoolean(store, KEY_AUTO_RECOMMENDATION, true),
         defaultScene,
@@ -80,7 +84,9 @@ export class SettingsRepository {
         this.readBoolean(store, KEY_MANUAL_LOCKED, false),
         this.readBoolean(store, KEY_SHOW_SECONDARY, true),
         this.readNumber(store, KEY_LAST_UPDATE, 0),
-        this.readBoolean(store, KEY_ONBOARDING, false)
+        this.readBoolean(store, KEY_ONBOARDING, false),
+        appMode,
+        this.readBoolean(store, KEY_AUTO_SYNC, true)
       );
       return SettingsReadResult.create(settings, true);
     } catch (error) {
@@ -105,6 +111,8 @@ export class SettingsRepository {
       store.putSync(KEY_SHOW_SECONDARY, settings.showSecondaryInfo);
       store.putSync(KEY_LAST_UPDATE, settings.lastSceneUpdateTime);
       store.putSync(KEY_ONBOARDING, settings.onboardingCompleted);
+      store.putSync(KEY_APP_MODE, settings.appMode);
+      store.putSync(KEY_AUTO_SYNC, settings.autoSyncEnabled);
       store.flushSync();
       AppLogger.info('Preferences saved');
       return true;
@@ -147,10 +155,14 @@ export class SettingsRepository {
     return this.save(result.settings);
   }
 
-  completeOnboarding(defaultScene: SceneType): boolean {
+  completeOnboarding(defaultScene: SceneType, appMode: AppMode): boolean {
     const result: SettingsReadResult = this.initialize();
     result.settings.defaultScene = defaultScene;
+    result.settings.appMode = appMode;
     result.settings.onboardingCompleted = true;
+    if (appMode === AppMode.LITE) {
+      result.settings.autoSyncEnabled = false;
+    }
     return this.save(result.settings);
   }
 

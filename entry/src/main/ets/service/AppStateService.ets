@@ -1,5 +1,5 @@
 import { common } from '@kit.AbilityKit';
-import { AppSettings, SettingsReadResult } from '../model/SceneModels';
+import { AppMode, AppSettings, SettingsReadResult } from '../model/SceneModels';
 import { SceneType } from '../model/SceneType';
 import { SettingsRepository } from '../repository/SettingsRepository';
 
@@ -10,6 +10,14 @@ export class AppStateService {
 
   static shouldShowOnboarding(context: common.Context): boolean {
     return !new SettingsRepository(context).initialize().settings.onboardingCompleted;
+  }
+
+  static isFullMode(context: common.Context): boolean {
+    return new SettingsRepository(context).initialize().settings.appMode === AppMode.FULL;
+  }
+
+  static isAutoSyncEnabled(context: common.Context): boolean {
+    return new SettingsRepository(context).initialize().settings.autoSyncEnabled;
   }
 
   static updateAutoRecommendation(context: common.Context, enabled: boolean): boolean {
@@ -36,6 +44,20 @@ export class AppStateService {
     const repository: SettingsRepository = new SettingsRepository(context);
     const result: SettingsReadResult = repository.initialize();
     result.settings.showSecondaryInfo = enabled;
+    return repository.save(result.settings);
+  }
+
+  static updateAppMode(context: common.Context, mode: AppMode): boolean {
+    const repository: SettingsRepository = new SettingsRepository(context);
+    const result: SettingsReadResult = repository.initialize();
+    result.settings.appMode = mode;
+    return repository.save(result.settings);
+  }
+
+  static updateAutoSync(context: common.Context, enabled: boolean): boolean {
+    const repository: SettingsRepository = new SettingsRepository(context);
+    const result: SettingsReadResult = repository.initialize();
+    result.settings.autoSyncEnabled = enabled;
     return repository.save(result.settings);
   }
 

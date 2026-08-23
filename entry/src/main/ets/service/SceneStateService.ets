@@ -1,6 +1,7 @@
 import { common } from '@kit.AbilityKit';
 import { SceneType } from '../model/SceneType';
 import { SettingsRepository } from '../repository/SettingsRepository';
+import { SystemLinkageService } from './SystemLinkageService';
 
 export class SceneStateService {
   static activateManual(context: common.Context, scene: SceneType, locked: boolean = false,
@@ -8,7 +9,12 @@ export class SceneStateService {
     if (!locked && (durationMinutes < 1 || durationMinutes > 1440)) {
       return false;
     }
-    return new SettingsRepository(context).setManualScene(scene, locked, durationMinutes);
+    const changed: boolean =
+      new SettingsRepository(context).setManualScene(scene, locked, durationMinutes);
+    if (changed) {
+      SystemLinkageService.applySceneEntry(context);
+    }
+    return changed;
   }
 
   static setManualLocked(context: common.Context, locked: boolean): boolean {
@@ -16,6 +22,10 @@ export class SceneStateService {
   }
 
   static restoreAutomatic(context: common.Context): boolean {
-    return new SettingsRepository(context).clearManualScene();
+    const changed: boolean = new SettingsRepository(context).clearManualScene();
+    if (changed) {
+      SystemLinkageService.applySceneExit(context);
+    }
+    return changed;
   }
 }

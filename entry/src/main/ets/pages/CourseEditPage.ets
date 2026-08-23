@@ -1,6 +1,7 @@
 import { common } from '@kit.AbilityKit';
 import { AppColors } from '../common/AppColors';
 import { AppDimensions } from '../common/AppDimensions';
+import { AppLogger } from '../common/AppLogger';
 import { AppTypography } from '../common/AppTypography';
 import { ImmersiveMaterials } from '../common/ImmersiveMaterials';
 import { FormField } from '../components/FormField';
@@ -9,6 +10,7 @@ import { HdsImmersiveNavigation } from '../components/HdsImmersiveNavigation';
 import { TimeUtils } from '../common/TimeUtils';
 import { Course } from '../model/CourseModels';
 import { OperationResult } from '../model/ServiceModels';
+import { CloudSyncService } from '../service/CloudSyncService';
 import { CourseService } from '../service/CourseService';
 import { FormRefreshCoordinator } from '../service/FormRefreshCoordinator';
 
@@ -92,6 +94,9 @@ struct CourseEditPage {
       return;
     }
     FormRefreshCoordinator.schedule(context, 'course_saved');
+    CloudSyncService.triggerAutoSync(context).catch((error: Object) => {
+      AppLogger.error('Auto cloud sync failed', error);
+    });
     this.getUIContext().getRouter().back();
   }
 

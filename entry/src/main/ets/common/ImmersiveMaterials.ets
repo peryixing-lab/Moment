@@ -63,6 +63,14 @@ export class ImmersiveMaterials {
     lightEffect: { color: undefined }
   });
 
+  static readonly BRAND_RED_ACTION: uiMaterial.Material = new uiMaterial.ImmersiveMaterial({
+    style: uiMaterial.ImmersiveStyle.THIN,
+    materialColor: AppColors.BRAND_RED_TINT,
+    applyShadow: true,
+    interactive: true,
+    lightEffect: { color: undefined }
+  });
+
   static readonly TEMPORARY_OVERLAY: uiMaterial.Material = new uiMaterial.ImmersiveMaterial({
     style: uiMaterial.ImmersiveStyle.THICK,
     applyShadow: true

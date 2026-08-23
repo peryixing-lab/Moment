@@ -2,6 +2,7 @@ import { common } from '@kit.AbilityKit';
 import { promptAction } from '@kit.ArkUI';
 import { AppColors } from '../common/AppColors';
 import { AppDimensions } from '../common/AppDimensions';
+import { AppLogger } from '../common/AppLogger';
 import { AppTypography } from '../common/AppTypography';
 import { ImmersiveMaterials } from '../common/ImmersiveMaterials';
 import { EmptyState } from '../components/EmptyState';
@@ -14,6 +15,7 @@ import {
 import { HdsImmersiveNavigation } from '../components/HdsImmersiveNavigation';
 import { TimeUtils } from '../common/TimeUtils';
 import { Course } from '../model/CourseModels';
+import { CloudSyncService } from '../service/CloudSyncService';
 import { CourseService } from '../service/CourseService';
 import { DataHealthService } from '../service/DataHealthService';
 import { FormRefreshCoordinator } from '../service/FormRefreshCoordinator';
@@ -102,6 +104,9 @@ struct CourseListPage {
     }
     this.loadCourses();
     FormRefreshCoordinator.schedule(context, 'course_deleted');
+    CloudSyncService.triggerAutoSync(context).catch((error: Object) => {
+      AppLogger.error('Auto cloud sync failed', error);
+    });
   }
 
   private startBatchSelection(): void {
@@ -165,6 +170,9 @@ struct CourseListPage {
     this.loadCourses();
     this.showToast($r('app.string.batch_delete_course_done'));
     FormRefreshCoordinator.schedule(context, 'courses_batch_deleted');
+    CloudSyncService.triggerAutoSync(context).catch((error: Object) => {
+      AppLogger.error('Auto cloud sync failed', error);
+    });
   }
 
   private retry(): void {

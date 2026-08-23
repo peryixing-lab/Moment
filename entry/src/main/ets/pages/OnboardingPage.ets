@@ -1,5 +1,6 @@
 import { common } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { AppColors } from '../common/AppColors';
 import { AppDimensions } from '../common/AppDimensions';
 import { AppLogger } from '../common/AppLogger';
@@ -10,7 +11,10 @@ import {
   HDS_PRIMARY_BUTTON,
   HDS_SECONDARY_BUTTON
 } from '../components/HdsImmersiveButton';
+import { AppMode } from '../model/SceneModels';
 import { SceneType } from '../model/SceneType';
+import { AccountService } from '../service/AccountService';
+import { CloudSyncResult, CloudSyncService } from '../service/CloudSyncService';
 import { OnboardingService } from '../service/OnboardingService';
 import { ScenePresentationService } from '../service/ScenePresentationService';
 
@@ -19,6 +23,10 @@ import { ScenePresentationService } from '../service/ScenePresentationService';
 struct OnboardingPage {
   @State private step: number = 1;
   @State private defaultScene: SceneType = SceneType.LIBRARY;
+  @State private appMode: AppMode = AppMode.FULL;
+  @State private accountFlowDone: boolean = false;
+  @State private accountLoggingIn: boolean = false;
+  @State private accountErrorText: string = '';
   @State private hasError: boolean = false;
   @State private topAvoidVp: number = 40;
   @State private bottomAvoidVp: number = 24;
@@ -78,7 +86,7 @@ struct OnboardingPage {
 
   private complete(destination: string = ''): void {
     const context: common.Context | undefined = this.context();
-    if (context === undefined || !OnboardingService.complete(context, this.defaultScene)) {
+    if (context === undefined || !OnboardingService.complete(context, this.defaultScene, this.appMode)) {
       this.hasError = true;
       return;
     }
@@ -91,9 +99,64 @@ struct OnboardingPage {
     });
   }
 
+  private totalSteps(): number {
+    return 4;
+  }
+
   private goToStep(nextStep: number): void {
     this.hasError = false;
-    this.step = Math.max(1, Math.min(3, nextStep));
+    this.step = Math.max(1, Math.min(this.totalSteps(), nextStep));
+  }
+
+  private handleModeContinue(): void {
+    if (this.appMode === AppMode.LITE) {
+      this.goToStep(3);
+      return;
+    }
+    if (!this.accountFlowDone) {
+      this.attemptOnboardingLogin();
+      return;
+    }
+    this.goToStep(3);
+  }
+
+  private skipOnboardingLogin(): void {
+    this.accountFlowDone = true;
+    this.accountErrorText = '';
+    this.goToStep(3);
+  }
+
+  private attemptOnboardingLogin(): void {
+    const context: common.Context | undefined = this.context();
+    if (context === undefined || this.accountLoggingIn) {
+      return;
+    }
+    this.accountLoggingIn = true;
+    this.accountErrorText = '';
+    AccountService.login(context).then((errorDetail: string) => {
+      this.accountLoggingIn = false;
+      if (errorDetail.length > 0) {
+        this.accountErrorText = errorDetail;
+        return;
+      }
+      this.accountFlowDone = true;
+      CloudSyncService.prepareCloud();
+      CloudSyncService.sync(context).then((result: CloudSyncResult) => {
+        if (!result.success) {
+          AppLogger.error(`Onboarding initial sync failed: ${result.detail}`);
+        }
+      }).catch((error: Object) => {
+        AppLogger.error('Onboarding initial sync failed', error);
+      });
+      this.goToStep(3);
+    }).catch((error: Object) => {
+      this.accountLoggingIn = false;
+      const businessError: BusinessError = error as BusinessError;
+      const message: string = typeof businessError.message === 'string' ?
+        businessError.message : '未知错误';
+      this.accountErrorText = `登录失败：${message}`;
+      AppLogger.error('Onboarding HUAWEI ID sign-in failed', error);
+    });
   }
 
   private sceneIcon(scene: SceneType): Resource {
@@ -149,7 +212,7 @@ struct OnboardingPage {
           .accessibilityText($r('app.string.onboarding_logo_description'))
       }
 
-      Progress({ value: this.step, total: 3, type: ProgressType.Linear })
+      Progress({ value: this.step, total: this.totalSteps(), type: ProgressType.Linear })
         .layoutWeight(1)
         .height(5)
         .color(AppColors.ACCENT)
@@ -157,7 +220,7 @@ struct OnboardingPage {
         .borderRadius(3)
         .style({ strokeWidth: 5 })
 
-      Text(`${this.step} / 3`)
+      Text(`${this.step} / ${this.totalSteps()}`)
         .fontSize(AppTypography.CAPTION)
         .fontWeight(FontWeight.Medium)
         .fontColor(AppColors.TEXT_SECONDARY)
@@ -297,6 +360,94 @@ struct OnboardingPage {
     .accessibilityText(title)
     .accessibilityDescription(description)
     .onClick(() => this.complete(destination))
+  }
+
+  @Builder
+  private ModeChoice(mode: AppMode, title: Resource, description: Resource, icon: Resource) {
+    Button({ type: ButtonType.Normal }) {
+      Row({ space: 14 }) {
+        Row() {
+          SymbolGlyph(icon)
+            .fontSize(24)
+            .fontColor([mode === this.appMode ? AppColors.ON_ACCENT : AppColors.ACCENT])
+        }
+        .width(48)
+        .height(48)
+        .justifyContent(FlexAlign.Center)
+        .borderRadius(14)
+        .systemMaterial(mode === this.appMode ?
+          ImmersiveMaterials.ACCENT_CHIP : ImmersiveMaterials.SUBTLE_SURFACE)
+
+        Column({ space: 4 }) {
+          Text(title)
+            .fontSize(AppTypography.BODY_LARGE)
+            .fontWeight(FontWeight.Bold)
+            .fontColor(AppColors.TEXT_PRIMARY)
+          Text(description)
+            .fontSize(AppTypography.CAPTION)
+            .fontColor(AppColors.TEXT_SECONDARY)
+            .lineHeight(18)
+            .maxLines(2)
+        }
+        .layoutWeight(1)
+        .alignItems(HorizontalAlign.Start)
+
+        if (mode === this.appMode) {
+          SymbolGlyph($r('sys.symbol.checkmark_circle_fill'))
+            .fontSize(20)
+            .fontColor([AppColors.ACCENT])
+        }
+      }
+      .width('100%')
+    }
+    .width('100%')
+    .height(88)
+    .padding({ left: 16, right: 16 })
+    .borderRadius(AppDimensions.RADIUS_PRIMARY)
+    .attributeModifier(mode === this.appMode ? HDS_PRIMARY_BUTTON : HDS_SECONDARY_BUTTON)
+    .accessibilityText(title)
+    .accessibilityDescription(description)
+    .onClick(() => this.appMode = mode)
+  }
+
+  @Builder
+  private ModeStep() {
+    Column({ space: 24 }) {
+      Column({ space: 9 }) {
+        Text($r('app.string.onboarding_mode_title'))
+          .width('100%')
+          .fontSize(AppTypography.TITLE_LARGE)
+          .fontWeight(FontWeight.Bold)
+          .fontColor(AppColors.TEXT_PRIMARY)
+        Text($r('app.string.onboarding_mode_description'))
+          .width('100%')
+          .fontSize(AppTypography.BODY_MEDIUM)
+          .fontColor(AppColors.TEXT_SECONDARY)
+          .lineHeight(23)
+      }
+      .width('100%')
+      .alignItems(HorizontalAlign.Start)
+
+      Column({ space: 12 }) {
+        this.ModeChoice(AppMode.FULL, $r('app.string.app_mode_full'),
+          $r('app.string.app_mode_full_desc'), $r('sys.symbol.cloud'))
+        this.ModeChoice(AppMode.LITE, $r('app.string.app_mode_lite'),
+          $r('app.string.app_mode_lite_desc'), $r('sys.symbol.rectangle_stack'))
+      }
+      .width('100%')
+
+      if (this.accountErrorText.length > 0) {
+        Text(this.accountErrorText)
+          .width('100%')
+          .padding(12)
+          .fontSize(AppTypography.CAPTION)
+          .fontColor(AppColors.WARNING_TEXT)
+          .borderRadius(AppDimensions.RADIUS_SECONDARY)
+          .systemMaterial(ImmersiveMaterials.WARNING_SURFACE)
+          .accessibilityGroup(true)
+      }
+    }
+    .width('100%')
   }
 
   @Builder
@@ -464,16 +615,46 @@ struct OnboardingPage {
           .accessibilityGroup(true)
       }
 
-      if (this.step < 3) {
-        Button(this.step === 1 ? $r('app.string.onboarding_get_started') : $r('app.string.onboarding_continue'))
+      if (this.step === 1) {
+        Button($r('app.string.onboarding_get_started'))
           .width('100%')
-          .height(52)
+          .height(AppDimensions.BUTTON_HEIGHT)
           .fontSize(AppTypography.BODY_LARGE)
           .fontWeight(FontWeight.Medium)
           .fontColor(AppColors.ACCENT)
           .borderRadius(AppDimensions.RADIUS_SECONDARY)
           .attributeModifier(HDS_PRIMARY_BUTTON)
-          .onClick(() => this.goToStep(this.step + 1))
+          .onClick(() => this.goToStep(2))
+      } else if (this.step === 2) {
+        if (this.appMode === AppMode.FULL && !this.accountFlowDone) {
+          Button($r('app.string.onboarding_login_skip'))
+            .width('100%')
+            .height(AppDimensions.MIN_TOUCH_TARGET)
+            .fontSize(AppTypography.BODY_MEDIUM)
+            .fontColor(AppColors.TEXT_SECONDARY)
+            .attributeModifier(HDS_SECONDARY_BUTTON)
+            .onClick(() => this.skipOnboardingLogin())
+        }
+        Button($r('app.string.onboarding_continue'))
+          .width('100%')
+          .height(AppDimensions.BUTTON_HEIGHT)
+          .fontSize(AppTypography.BODY_LARGE)
+          .fontWeight(FontWeight.Medium)
+          .fontColor(AppColors.ACCENT)
+          .borderRadius(AppDimensions.RADIUS_SECONDARY)
+          .attributeModifier(HDS_PRIMARY_BUTTON)
+          .enabled(!this.accountLoggingIn)
+          .onClick(() => this.handleModeContinue())
+      } else if (this.step === 3) {
+        Button($r('app.string.onboarding_continue'))
+          .width('100%')
+          .height(AppDimensions.BUTTON_HEIGHT)
+          .fontSize(AppTypography.BODY_LARGE)
+          .fontWeight(FontWeight.Medium)
+          .fontColor(AppColors.ACCENT)
+          .borderRadius(AppDimensions.RADIUS_SECONDARY)
+          .attributeModifier(HDS_PRIMARY_BUTTON)
+          .onClick(() => this.goToStep(4))
       } else {
         Button($r('app.string.onboarding_later'))
           .width('100%')
@@ -503,6 +684,8 @@ struct OnboardingPage {
               if (this.step === 1) {
                 this.WelcomeStep()
               } else if (this.step === 2) {
+                this.ModeStep()
+              } else if (this.step === 3) {
                 this.SceneStep()
               } else {
                 this.FirstItemStep()

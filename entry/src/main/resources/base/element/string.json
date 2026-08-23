@@ -1431,6 +1431,150 @@
     {
       "name": "weekday_saturday",
       "value": "周六"
+    },
+    {
+      "name": "scene_silent_toggle",
+      "value": "进入场景自动静音"
+    },
+    {
+      "name": "scene_silent_toggle_desc",
+      "value": "进入场景时自动将手机切换为静音，场景结束后恢复原响铃模式。"
+    },
+    {
+      "name": "account_section_title",
+      "value": "华为账号"
+    },
+    {
+      "name": "account_login_desc",
+      "value": "登录后可将任务、课程与场景规则同步到华为云，多设备自动同步。"
+    },
+    {
+      "name": "account_login_now",
+      "value": "华为账号登录"
+    },
+    {
+      "name": "account_union_id",
+      "value": "账号标识"
+    },
+    {
+      "name": "account_signed_in",
+      "value": "登录成功"
+    },
+    {
+      "name": "account_signed_out",
+      "value": "已退出登录"
+    },
+    {
+      "name": "account_logout_failed",
+      "value": "退出失败，请重试"
+    },
+    {
+      "name": "account_login_failed",
+      "value": "登录失败，请检查网络与 AGC 配置"
+    },
+    {
+      "name": "account_sync_now",
+      "value": "立即同步"
+    },
+    {
+      "name": "account_syncing",
+      "value": "正在同步…"
+    },
+    {
+      "name": "account_sync_idle",
+      "value": "尚未同步"
+    },
+    {
+      "name": "account_sync_done",
+      "value": "同步完成"
+    },
+    {
+      "name": "account_sync_failed",
+      "value": "同步失败，请检查网络与云端配置"
+    },
+    {
+      "name": "account_logout",
+      "value": "退出登录"
+    },
+    {
+      "name": "ringer_linkage_permission_reason",
+      "value": "用于进入场景时开启手机静音、场景结束后恢复。"
+    },
+    {
+      "name": "settings_app_mode",
+      "value": "应用模式"
+    },
+    {
+      "name": "settings_app_mode_desc",
+      "value": "全量模式支持华为云同步；精简模式仅使用本地数据"
+    },
+    {
+      "name": "app_mode_full",
+      "value": "全量模式"
+    },
+    {
+      "name": "app_mode_full_desc",
+      "value": "登录华为账号，多设备云同步"
+    },
+    {
+      "name": "app_mode_lite",
+      "value": "精简模式"
+    },
+    {
+      "name": "app_mode_lite_desc",
+      "value": "本地优先，不使用账号与云同步"
+    },
+    {
+      "name": "auto_sync",
+      "value": "自动同步"
+    },
+    {
+      "name": "auto_sync_desc",
+      "value": "保存或删除后立即同步到华为云（需已登录）"
+    },
+    {
+      "name": "onboarding_mode_title",
+      "value": "你希望如何使用此刻？"
+    },
+    {
+      "name": "onboarding_mode_description",
+      "value": "全量模式支持华为云同步；精简模式更轻量，数据仅在本机。"
+    },
+    {
+      "name": "onboarding_login_skip",
+      "value": "跳过，稍后登录"
+    },
+    {
+      "name": "account_switch_title",
+      "value": "检测到新账号"
+    },
+    {
+      "name": "account_switch_message",
+      "value": "本机已有数据，如何处理？合并会保留本地数据并同步新账号云端；替换会清空本机数据并加载新账号云端。"
+    },
+    {
+      "name": "account_merge",
+      "value": "合并数据"
+    },
+    {
+      "name": "account_replace",
+      "value": "替换为新账号数据"
+    },
+    {
+      "name": "account_logout_title",
+      "value": "退出登录"
+    },
+    {
+      "name": "account_logout_message",
+      "value": "是否保留本机数据？保留仅退出账号；不保留将清空本机的任务、课程与规则。"
+    },
+    {
+      "name": "account_keep_data",
+      "value": "保留数据"
+    },
+    {
+      "name": "account_clear_data",
+      "value": "清空数据并退出"
     }
   ]
 }

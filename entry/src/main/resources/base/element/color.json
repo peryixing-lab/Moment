@@ -25,6 +25,7 @@
     { "name": "warning_material_tint", "value": "#26F2B84B" },
     { "name": "warning_text", "value": "#7A4A00" },
     { "name": "danger", "value": "#C83C4D" },
-    { "name": "danger_material_tint", "value": "#26C83C4D" }
+    { "name": "danger_material_tint", "value": "#26C83C4D" },
+    { "name": "brand_red_tint", "value": "#E8C83C4D" }
   ]
 }
