@@ -1,0 +1,21 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "此刻 - 手表场景状态" },
+    { "name": "EntryAbility_desc", "value": "此刻手表状态页" },
+    { "name": "EntryAbility_label", "value": "此刻" },
+    { "name": "scene_library_name", "value": "图书馆" },
+    { "name": "scene_library_subtitle", "value": "安静下来，完成今天最重要的一件事。" },
+    { "name": "scene_class_name", "value": "上课" },
+    { "name": "scene_class_subtitle", "value": "把注意力留在这一堂课上。" },
+    { "name": "scene_meeting_name", "value": "会议" },
+    { "name": "scene_meeting_subtitle", "value": "带着清晰的目标进入讨论。" },
+    { "name": "scene_commute_name", "value": "通勤" },
+    { "name": "scene_commute_subtitle", "value": "从容出发，也别落下重要的东西。" },
+    { "name": "scene_default_label", "value": "默认场景" },
+    { "name": "scene_manual_label", "value": "手动切换" },
+    { "name": "action_switch_scene", "value": "切换场景" },
+    { "name": "scene_switch_title", "value": "切换场景" },
+    { "name": "scene_switch_done", "value": "已切换" },
+    { "name": "back", "value": "返回" }
+  ]
+}

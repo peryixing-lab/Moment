@@ -1,0 +1,1 @@
+# Obfuscation rule file for the wearable module (disabled by default).

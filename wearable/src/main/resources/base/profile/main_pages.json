@@ -1,0 +1,6 @@
+{
+  "src": [
+    "pages/SceneStatusPage",
+    "pages/SceneSwitchPage"
+  ]
+}
