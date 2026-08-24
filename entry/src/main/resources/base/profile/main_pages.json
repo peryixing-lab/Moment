@@ -5,6 +5,7 @@
     "pages/CourseListPage",
     "pages/CourseEditPage",
     "pages/CourseImportPage",
+    "pages/SchedulePage",
     "pages/CalendarImportSelectPage",
     "pages/TaskListPage",
     "pages/TaskEditPage",

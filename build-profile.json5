@@ -52,18 +52,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "wearable",
-      "srcPath": "./wearable",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
     }
   ]
 }

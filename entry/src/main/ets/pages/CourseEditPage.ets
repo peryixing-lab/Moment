@@ -1,7 +1,6 @@
 import { common } from '@kit.AbilityKit';
 import { AppColors } from '../common/AppColors';
 import { AppDimensions } from '../common/AppDimensions';
-import { AppLogger } from '../common/AppLogger';
 import { AppTypography } from '../common/AppTypography';
 import { ImmersiveMaterials } from '../common/ImmersiveMaterials';
 import { FormField } from '../components/FormField';
@@ -10,7 +9,6 @@ import { HdsImmersiveNavigation } from '../components/HdsImmersiveNavigation';
 import { TimeUtils } from '../common/TimeUtils';
 import { Course } from '../model/CourseModels';
 import { OperationResult } from '../model/ServiceModels';
-import { CloudSyncService } from '../service/CloudSyncService';
 import { CourseService } from '../service/CourseService';
 import { FormRefreshCoordinator } from '../service/FormRefreshCoordinator';
 
@@ -40,6 +38,13 @@ struct CourseEditPage {
     const idValue: Object | undefined = params['id'];
     if (typeof idValue === 'number' && Number.isInteger(idValue) && idValue > 0) {
       this.loadCourse(idValue);
+      return;
+    }
+    // Prefill the weekday when opening the editor from a blank timetable slot.
+    const dayValue: Object | undefined = params['day'];
+    if (typeof dayValue === 'number' && Number.isInteger(dayValue) &&
+      dayValue >= 0 && dayValue <= 6) {
+      this.dayOfWeek = dayValue;
     }
   }
 
@@ -94,9 +99,6 @@ struct CourseEditPage {
       return;
     }
     FormRefreshCoordinator.schedule(context, 'course_saved');
-    CloudSyncService.triggerAutoSync(context).catch((error: Object) => {
-      AppLogger.error('Auto cloud sync failed', error);
-    });
     this.getUIContext().getRouter().back();
   }
 

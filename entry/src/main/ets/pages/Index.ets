@@ -418,6 +418,8 @@ struct Index {
   private ManagementBlock() {
     SectionHeader({ title: $r('app.string.management') })
     Column() {
+      this.ManagementRow($r('app.string.schedule_page_title'), $r('sys.symbol.calendar'),
+        'pages/SchedulePage', false)
       this.ManagementRow($r('app.string.manage_courses'), $r('sys.symbol.doc'),
         'pages/CourseListPage', false)
       this.ManagementRow($r('app.string.manage_tasks'), $r('sys.symbol.checkmark'),

@@ -4,7 +4,6 @@ import { AppLogger } from '../common/AppLogger';
 import { ResourceText } from '../common/ResourceText';
 import { SceneContextRule, SceneContextTriggerType } from '../model/SceneContextModels';
 import { SceneViewModel } from '../model/ViewModels';
-import { AccountService } from '../service/AccountService';
 import { FormRefreshCoordinator } from '../service/FormRefreshCoordinator';
 import { SceneContextMonitor } from '../service/SceneContextMonitor';
 import { SceneContextRuntime } from '../service/SceneContextRuntime';
@@ -180,7 +179,6 @@ export default class EntryAbility extends UIAbility {
       AppLogger.error('Unable to follow the system color mode', err as Object);
     }
     AppStorage.setOrCreate('contextSceneRefreshToken', 0);
-    AccountService.initialize(this.context);
     this.contextMonitor = new SceneContextMonitor(
       this.context,
       (rule: SceneContextRule): boolean => this.showContextScenePrompt(rule),

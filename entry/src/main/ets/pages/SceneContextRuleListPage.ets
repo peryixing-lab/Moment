@@ -2,7 +2,6 @@ import { common } from '@kit.AbilityKit';
 import { promptAction } from '@kit.ArkUI';
 import { AppColors } from '../common/AppColors';
 import { AppDimensions } from '../common/AppDimensions';
-import { AppLogger } from '../common/AppLogger';
 import { AppTypography } from '../common/AppTypography';
 import { ImmersiveMaterials } from '../common/ImmersiveMaterials';
 import { EmptyState } from '../components/EmptyState';
@@ -13,7 +12,6 @@ import {
 } from '../components/HdsImmersiveButton';
 import { HdsImmersiveNavigation } from '../components/HdsImmersiveNavigation';
 import { SceneContextRule, SceneContextTriggerType } from '../model/SceneContextModels';
-import { CloudSyncService } from '../service/CloudSyncService';
 import { FormRefreshCoordinator } from '../service/FormRefreshCoordinator';
 import { SceneContextRuleService } from '../service/SceneContextRuleService';
 import { SceneContextRuntime } from '../service/SceneContextRuntime';
@@ -91,9 +89,6 @@ struct SceneContextRuleListPage {
     this.loadRules();
     SceneContextRuntime.notifyRulesChanged();
     FormRefreshCoordinator.schedule(context, 'scene_context_rule_deleted');
-    CloudSyncService.triggerAutoSync(context).catch((error: Object) => {
-      AppLogger.error('Auto cloud sync failed', error);
-    });
   }
 
   private triggerLabel(rule: SceneContextRule): Resource {

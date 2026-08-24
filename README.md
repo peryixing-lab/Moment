@@ -20,16 +20,6 @@ Moment 是一款面向 HarmonyOS 的场景化信息应用。它会结合时间�
 | --- | --- | --- |
 | ![2×2 桌面卡片](exports/widgets/moment-scene-widget-2x2.png) | ![2×4 桌面卡片](exports/widgets/moment-scene-widget-2x4.png) | ![4×4 桌面卡片](exports/widgets/moment-scene-widget-4x4.png) |
 
-## 手表端（wearable）
-
-手表端为独立 `wearable` 模块（官方要求穿戴设备单独 HAP），遵循穿戴设备开发指南：
-
-- **强制深色模式**：`setColorMode(COLOR_MODE_DARK)`，配色使用与手机端 `dark/element/color.json` 完全相同的色值，深色效果与其他端一致。
-- **显示状态**：主页展示当前时间、场景圆形标识、场景名与场景来源（默认场景/手动切换），每 30 秒刷新时钟。
-- **切换状态**：2×2 场景网格（图书馆、上课、会议、通勤），单击即切换并返回；当前场景高亮选中。
-- **屏幕适配**：圆屏内容居中留白，触控目标 ≥44vp，底部主按钮位于拇指操作区；主页适配竖屏、无软键盘与复杂列表。
-- **数据**：场景状态（场景类型、是否手动）存于手表本地 Preferences；未集成多设备数据同步。
-
 ## 技术栈
 
 - HarmonyOS Stage 模型

@@ -2,7 +2,6 @@ import { common } from '@kit.AbilityKit';
 import { promptAction } from '@kit.ArkUI';
 import { AppColors } from '../common/AppColors';
 import { AppDimensions } from '../common/AppDimensions';
-import { AppLogger } from '../common/AppLogger';
 import { AppTypography } from '../common/AppTypography';
 import { ImmersiveMaterials } from '../common/ImmersiveMaterials';
 import { EmptyState } from '../components/EmptyState';
@@ -16,7 +15,6 @@ import { HdsImmersiveNavigation } from '../components/HdsImmersiveNavigation';
 import { TimeUtils } from '../common/TimeUtils';
 import { SceneType } from '../model/SceneType';
 import { LocalTask, TaskPriority } from '../model/TaskModels';
-import { CloudSyncService } from '../service/CloudSyncService';
 import { DataHealthService } from '../service/DataHealthService';
 import { FormRefreshCoordinator } from '../service/FormRefreshCoordinator';
 import { ScenePresentationService } from '../service/ScenePresentationService';
@@ -115,9 +113,6 @@ struct TaskListPage {
     }
     this.loadTasks();
     FormRefreshCoordinator.schedule(context, 'task_deleted');
-    CloudSyncService.triggerAutoSync(context).catch((error: Object) => {
-      AppLogger.error('Auto cloud sync failed', error);
-    });
   }
 
   private priorityLabel(priority: TaskPriority): Resource {
